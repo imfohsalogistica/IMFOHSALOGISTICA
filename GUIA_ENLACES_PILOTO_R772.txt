@@ -1,0 +1,39 @@
+LOGÍSTICA IMFOHSA — ENLACES R7.7.2 PILOTO
+==========================================
+
+QUÉ ENLACE COMPARTIR
+Comparta EL MISMO enlace HTTPS público con todos los usuarios.
+Cada usuario inicia sesión con su propio usuario y la plataforma aplica sus permisos.
+
+DÓNDE ENCONTRARLO
+1. En la PC que funcionará como servidor, ejecute INICIAR_PILOTO_INTERNET.bat.
+2. Mantenga abierta esa ventana durante toda la prueba.
+3. Cuando Cloudflare termine, en la MISMA carpeta aparecerán:
+   - ENLACE_PILOTO_PUBLICO.txt
+   - ENLACES_PILOTO_PARA_COMPARTIR.txt
+4. Abra ENLACES_PILOTO_PARA_COMPARTIR.txt. El launcher también intenta abrirlo automáticamente en Bloc de notas.
+5. Copie la URL que inicia con https:// y termina en /index.html?v=772.
+
+TAMBIÉN DENTRO DE LA PLATAFORMA
+Gerencia/Jefatura verán arriba el botón "🔗 Enlaces piloto". Ahí se muestra el enlace actual y los usuarios.
+
+USUARIOS
+JLEMUS   — Gerencia
+WFUENTES — Jefe de Logística
+NLIMA    — Asistente Zona 16
+GOLIVA   — Coordinador Zona 4
+VENTAS1  — Consulta Vendedores
+COBROS1  — Créditos y Cobros
+DCHOC    — Mensajero Daniel Choc
+ECIVIL   — Mensajero Edwin Civil
+
+Contraseña temporal: Imfohsa1234/
+
+MENSAJEROS
+Para el piloto se recomienda compartirles el MISMO enlace general y que ingresen con DCHOC o ECIVIL. Al iniciar sesión irán directamente a su propia ruta móvil.
+Opcionalmente, en Mensajeros → Acceso ruta se puede generar/re-enviar un acceso directo para una ruta concreta.
+
+IMPORTANTE
+- La URL de un Cloudflare Quick Tunnel puede cambiar si se cierra/reinicia el túnel. Si cambia, vuelva a compartir la URL nueva del archivo ENLACES_PILOTO_PARA_COMPARTIR.txt.
+- La PC servidor debe permanecer encendida, con Internet y con INICIAR_PILOTO_INTERNET.bat ejecutándose.
+- Los demás equipos NO necesitan estar en la misma Wi-Fi; pueden usar otra red o datos móviles.

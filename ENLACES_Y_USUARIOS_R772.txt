@@ -1,0 +1,31 @@
+LOGÍSTICA IMFOHSA R7.7.2 PILOTO — ACCESOS
+
+1) En la PC servidor ejecute:
+   INICIAR_PILOTO_INTERNET.bat
+
+2) Cuando Cloudflare termine, abra:
+   ENLACE_PILOTO_PUBLICO.txt
+   o
+   ENLACES_PILOTO_PARA_COMPARTIR.txt
+
+3) COMPARTA EL MISMO ENLACE HTTPS A TODOS.
+   No necesitan usar la misma Wi-Fi.
+
+USUARIOS
+JLEMUS   — Gerencia
+WFUENTES — Jefe de Logística
+NLIMA    — Asistente de Logística Zona 16
+GOLIVA   — Coordinador de Logística Zona 4
+VENTAS1  — Consulta Vendedores
+COBROS1  — Créditos y Cobros
+DCHOC    — Daniel Choc / mensajero
+ECIVIL   — Edwin Civil / mensajero
+
+Contraseña temporal: Imfohsa1234/
+
+MENSAJEROS
+Forma recomendada: mismo enlace general + usuario/contraseña.
+Forma opcional: módulo Mensajeros -> Acceso ruta -> copiar/WhatsApp del acceso directo.
+
+IMPORTANTE
+El URL trycloudflare.com puede cambiar si se reinicia el túnel. Siempre use el archivo generado en la sesión actual.

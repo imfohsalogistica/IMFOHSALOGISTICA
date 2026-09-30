@@ -1,0 +1,19 @@
+LOGÍSTICA IMFOHSA R7.5.15.1 — LOGIN CORREGIDO
+
+Corrección aplicada:
+- Se eliminó una inserción de script que estaba cortando el JavaScript principal.
+- Esa falla provocaba que la pantalla mostrara literalmente ${esc(title)} y ${body}.
+- La pantalla de acceso vuelve a mostrar Usuario / Contraseña vacíos.
+- Se agregó control anti-caché para evitar que Chrome reutilice el index.html defectuoso.
+- INICIAR_IMFOHSA.bat abre la versión con parámetro de actualización.
+
+Usuarios de prueba:
+JLEMUS
+WFUENTES
+NLIMA
+GOLIVA
+VENTAS1
+COBROS1
+
+Clave temporal para todos:
+Imfohsa1234/

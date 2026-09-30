@@ -1,0 +1,20 @@
+FLUJO CORRECTO DE ENTREGA DE RUTA — R7.7.3
+
+1. Logística carga pedidos.
+2. Pedidos quedan NO ASIGNADOS.
+3. Logística asigna pedidos a un mensajero.
+4. La asignación queda en BORRADOR; el mensajero aún no debe iniciar.
+5. Logística reordena 1-2-3-4 según necesidad.
+6. Logística valida las direcciones/pines con Google.
+7. Logística revisa corte, instrucciones y cobros.
+8. Logística elige Acciones de ruta > ENVIAR RUTA AL MENSAJERO.
+9. Se registra la hora oficial de entrega de ruta.
+10. Inicia contador: 5 min alerta preventiva / 10 min salida tardía.
+11. El mensajero abre el mismo enlace HTTPS del piloto e inicia sesión.
+12. DCHOC ve únicamente Daniel; ECIVIL ve únicamente Edwin.
+13. Foto tacómetro inicial + lectura km.
+14. Ruta secuencial: parada 1, luego 2, luego 3...
+15. Retorno CEDI + foto tacómetro final.
+
+WHATSAPP
+No se necesita enviar una URL diferente por cada ruta. El enlace general de la plataforma puede guardarse en el teléfono del mensajero. WhatsApp puede usarse solo para avisos humanos si Logística lo desea.

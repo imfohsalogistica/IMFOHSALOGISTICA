@@ -1,0 +1,18 @@
+LOGÍSTICA IMFOHSA R7.7.6 — CORRECCIÓN ERROR CLOUDFLARE 1033
+
+Qué significaba el error visto en el teléfono:
+- El servidor IMFOHSA local estaba activo.
+- Cloudflare había entregado un nombre trycloudflare.com, pero el conector dejó de estar saludable.
+- El iniciador anterior publicaba el URL demasiado pronto.
+
+Qué cambia en R7.7.6:
+1. Cloudflare se fuerza a HTTP/2, más compatible cuando UDP/QUIC está bloqueado.
+2. Toda la salida de cloudflared queda registrada en server_runtime.log.
+3. El URL público NO se entrega hasta que una solicitud real a /api/health responde correctamente.
+4. Se genera ENLACE_RED_LOCAL.txt para pruebas dentro de la misma Wi-Fi.
+5. Si Cloudflare no queda saludable, el iniciador lo informa y no dice PILOTO LISTO con un enlace roto.
+
+IMPORTANTE:
+- No cierre la ventana negra mientras use el piloto.
+- Para usuarios en otra red utilice solamente ENLACE_PILOTO_PUBLICO.txt cuando exista.
+- Para otra PC en la misma Wi-Fi puede usar ENLACE_RED_LOCAL.txt.

@@ -1,0 +1,45 @@
+QA PLANIFICADOR DE RUTAS IMFOHSA — R7.5.19 + MOTOR R8
+Fecha de revisión: 22/08/2026
+
+CORRECCIONES AUTORIZADAS APLICADAS
+[OK] Flechas ↑ / ↓ usan data-delta y validan posición antes de modificar.
+[OK] Drag & drop consolidado en el manejador final; guarda orden/reasignación y aprendizaje.
+[OK] Optimizar esta ruta ya no depende del permiso antiguo r7511Manager; valida centro autorizado.
+[OK] Optimizar muestra resultado explícito (ruta ya óptima o km antes/después/fuente).
+[OK] Compartir por WhatsApp ya no queda bloqueado para Asistente Zona 16 en su propio centro.
+[OK] Endpoint /api/share/driver probado con rol asistente_z16: HTTP 200 y token/path generado.
+[OK] Disponibilidad diaria añadida al GET de /api/state para perfiles operativos.
+[OK] Disponibilidad diaria añadida al PUT de /api/state con control por centro.
+[OK] Prueba NLIMA: estado Ausente de mensajero Zona 16 persiste tras nuevo GET.
+[OK] Prueba de seguridad: NLIMA no puede alterar disponibilidad de mensajero Zona 4.
+[OK] Ausente/Panel devuelve gestiones pendientes a No asignadas si la ruta no inició.
+[OK] Si la ruta ya inició, el sistema solicita confirmación antes de devolver pendientes.
+[OK] planDaypart se fuerza a ALL porque la interfaz actual ya no tiene selector AM/PM visible.
+[OK] Mapa usa el corte visible y contabiliza todos los pedidos del día/centro.
+[OK] Pedidos con coordenadas idénticas reciben desplazamiento visual para no quedar ocultos uno debajo de otro.
+[OK] El mapa muestra contador: pedidos contabilizados / con ubicación / sin coordenadas.
+[OK] JavaScript completo validado con node --check sin errores de sintaxis.
+[OK] Servidor Go recompilado para Linux y Windows después de las correcciones.
+[OK] /api/health = 200.
+[OK] /api/info = 200.
+[OK] Escritura de pedidos del centro propio sigue funcionando para asistente_z16.
+
+PRUEBAS DIRECTAS DEL SERVIDOR
+- Login NLIMA -> 200 / role=asistente_z16.
+- GET /api/state incluye dailyAvailability.
+- PUT dailyAvailability Zona 16 -> 200.
+- GET posterior conserva Ausente.
+- Intento de escribir disponibilidad de Zona 4 desde NLIMA -> ignorado/bloqueado por combinación segura.
+- GET /api/share/driver -> 200 con path válido.
+
+LIMITACIONES DEL ENTORNO DE QA
+1. Chromium del entorno está bloqueado por política administrativa para abrir incluso localhost/file://,
+   por lo que no fue posible automatizar clics reales con navegador headless dentro de este contenedor.
+   La lógica de eventos fue revisada estáticamente y el backend fue probado por HTTP real.
+2. Este entorno bloquea DNS hacia GitHub/OSRM externos. Por ello no se puede certificar aquí tráfico/ruta
+   externa en vivo ni el túnel HTTPS. La degradación a respaldo geográfico permanece activa.
+3. La prueba final de clic físico, WhatsApp instalado y HTTPS fuera de la Wi-Fi debe hacerse en la PC Windows
+   de IMFOHSA; son dependencias del entorno, no errores detectados en el código corregido.
+
+FALLOS ADICIONALES NUEVOS ENCONTRADOS
+- Ningún fallo adicional bloqueante distinto de los ya autorizados fue detectado durante esta revisión.

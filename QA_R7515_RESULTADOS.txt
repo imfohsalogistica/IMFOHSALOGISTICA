@@ -1,0 +1,8 @@
+LOGÍSTICA IMFOHSA R7.5.15
+
+PERMISOS CONFIRMADOS
+NLIMA: visualiza Zona 16 y Zona 4; modifica únicamente Zona 16.
+GOLIVA: visualiza Zona 16 y Zona 4; modifica únicamente Zona 4.
+JLEMUS / WFUENTES: visualizan y modifican ambas zonas.
+
+Clave temporal de pruebas: Imfohsa1234/

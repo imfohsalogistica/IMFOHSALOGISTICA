@@ -1,0 +1,13 @@
+LOGÍSTICA IMFOHSA R7.5.16.3
+
+CAMBIO SOLICITADO
+- NLIMA: se habilita el módulo Mensajeros.
+- GOLIVA: se habilita el módulo Mensajeros.
+- Ambos mantienen Dashboard, Planificador, Pedidos y despachos y Clientes Odoo.
+- Mensajeros es de consulta para NLIMA y GOLIVA: muestra actividad, entregados, no entregados, ausencias y resumen AM/PM.
+- No se habilita crear/editar mensajeros para estos perfiles.
+- Permisos de rutas se mantienen: NLIMA modifica solo Zona 16; GOLIVA modifica solo Zona 4; ambos visualizan ambos centros.
+
+USUARIOS DE PRUEBA
+NLIMA / Imfohsa1234/
+GOLIVA / Imfohsa1234/

@@ -1,0 +1,91 @@
+LOGÍSTICA IMFOHSA R7.7.4 PILOTO
+MANUAL PARA COMPARTIR ENLACES Y ENTREGAR RUTAS
+=================================================
+
+OBJETIVO
+Que Gerencia, Jefatura, Asistente, Ventas, Créditos y los mensajeros puedan ingresar desde redes de Internet diferentes usando la misma plataforma central.
+
+A. CÓMO GENERAR EL ENLACE PÚBLICO
+---------------------------------
+1. En la computadora que funcionará como servidor, abra la carpeta de la plataforma.
+2. Ejecute: INICIAR_PILOTO_INTERNET.bat
+3. Mantenga abierta la ventana negra durante toda la prueba.
+4. Cuando Cloudflare publique el acceso se generan automáticamente dos archivos en la MISMA carpeta:
+   - ENLACE_PILOTO_PUBLICO.txt
+   - ENLACES_PILOTO_PARA_COMPARTIR.txt
+5. Abra cualquiera de esos archivos y copie el enlace que inicia con:
+   https://........trycloudflare.com/index.html?v=774
+
+IMPORTANTE:
+- NO comparta localhost.
+- NO comparta una dirección 192.168.x.x o 10.x.x.x a personas que están en otra red.
+- El enlace trycloudflare.com puede cambiar cada vez que se reinicia el túnel. Si reinicia el piloto, vuelva a abrir ENLACE_PILOTO_PUBLICO.txt y use el enlace nuevo.
+
+B. QUÉ ENLACE SE COMPARTE A CADA USUARIO
+-----------------------------------------
+La forma RECOMENDADA es compartir EL MISMO ENLACE PÚBLICO a todos.
+Cada usuario inicia sesión y la plataforma decide qué puede ver según su rol.
+
+PERFIL                         USUARIO     ENLACE
+Gerencia                       JLEMUS      Enlace público principal
+Jefe de Logística              WFUENTES    Enlace público principal
+Asistente Logística Zona 16    NLIMA       Enlace público principal
+Coordinador Logística Zona 4   GOLIVA      Enlace público principal
+Ventas                         VENTAS1     Enlace público principal
+Créditos y Cobros              COBROS1     Enlace público principal
+Mensajero Daniel               DCHOC       Enlace público principal
+Mensajero Edwin                ECIVIL      Enlace público principal
+
+Contraseña temporal del piloto: Imfohsa1234/
+
+C. MENSAJEROS: CÓMO RECIBEN LA RUTA
+------------------------------------
+La ruta NO se entrega por WhatsApp.
+El proceso correcto es:
+
+1. Logística abre Planificador de Rutas.
+2. Asigna pedidos al mensajero.
+3. Reordena las paradas si es necesario.
+4. Valida las direcciones/puntos.
+5. Revisa instrucciones y cobros.
+6. Presiona: ENVIAR RUTA AL MENSAJERO.
+7. En ese momento la ruta queda publicada en la cuenta del mensajero.
+8. En ese momento inicia el reloj de salida de 5/10 minutos.
+9. El mensajero abre el enlace público, inicia sesión y ve su ruta móvil.
+
+No es necesario enviar un enlace nuevo por cada ruta.
+
+D. ACCESO MÓVIL DIRECTO DEL MENSAJERO (OPCIONAL)
+------------------------------------------------
+Existe solo para soporte/acceso rápido.
+Ruta dentro de la plataforma:
+Mensajeros > tarjeta del mensajero > Acceso móvil
+
+Este acceso NO sustituye el botón ENVIAR RUTA AL MENSAJERO del Planificador.
+La entrega oficial y el inicio del control 5/10 minutos se realizan desde el Planificador.
+
+E. WHATSAPP
+-----------
+Puede usar WhatsApp únicamente para enviar UNA VEZ el enlace público general o para avisar:
+"Daniel, tu ruta ya fue enviada. Ingresa a LOGÍSTICA IMFOHSA."
+
+No es necesario enviar cada nueva ruta por WhatsApp.
+
+F. DÓNDE VER LA GUÍA DENTRO DE LA PLATAFORMA
+--------------------------------------------
+1. Parte superior de la plataforma: botón "Enlaces piloto".
+2. Módulo Mensajeros: botón "Guía de accesos".
+3. Ambos muestran qué enlace usar y recuerdan la diferencia entre enlace público y acceso móvil directo.
+
+G. PRUEBA RECOMENDADA ANTES DE PRESENTAR
+----------------------------------------
+1. PC servidor: WFUENTES.
+2. Otra computadora/red: JLEMUS o NLIMA.
+3. Teléfono con datos móviles: DCHOC.
+4. Asigne 2 o 3 pedidos a Daniel.
+5. Valide direcciones.
+6. Reordene 1-2-3 a 2-1-3.
+7. Presione ENVIAR RUTA AL MENSAJERO.
+8. En el teléfono de Daniel actualice/abra la plataforma y confirme que aparece la misma secuencia.
+9. Verifique que el contador de salida inicia únicamente después del envío oficial.
+

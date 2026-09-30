@@ -1,0 +1,62 @@
+LOGÍSTICA IMFOHSA — R7.7.1 PILOTO
+==================================
+Objetivo: prueba real con usuarios conectados desde REDES DIFERENTES, sin instalar aún infraestructura empresarial definitiva.
+
+INICIO RÁPIDO
+1. Descomprima la carpeta completa en una PC Windows con Internet estable.
+2. Ejecute: INICIAR_PILOTO_INTERNET.bat
+3. Windows puede pedir autorización de Firewall: permita REDES PRIVADAS. Cloudflare crea la salida HTTPS sin abrir puertos del router.
+4. Espere a que aparezca ENLACE_PILOTO_PUBLICO.txt. Ese enlace https://....trycloudflare.com funciona desde otra Wi-Fi o datos móviles.
+5. Comparta EL MISMO ENLACE con Gerencia, Jefatura, Asistente Z16 y los dos mensajeros piloto.
+6. Mantenga encendida la PC servidor y la ventana de inicio durante toda la prueba.
+
+USUARIOS ADMINISTRATIVOS DEL PILOTO
+- WFUENTES / Imfohsa1234/   (Jefe de Logística)
+- JLEMUS / Imfohsa1234/     (Gerencia Operaciones)
+- NLIMA / Imfohsa1234/      (Asistente Zona 16)
+- GOLIVA / Imfohsa1234/     (Coordinador Zona 4)
+- VENTAS1 / Imfohsa1234/    (Ventas)
+- COBROS1 / Imfohsa1234/    (Créditos y Cobros)
+
+USUARIOS MENSAJEROS DEL PILOTO
+- DCHOC / Imfohsa1234/      (Daniel Choc)
+- ECIVIL / Imfohsa1234/     (Edwin Civil)
+
+ACCESO DEL MENSAJERO
+- El mensajero abre el MISMO enlace público que Logística.
+- Ingresa usuario y contraseña.
+- La plataforma lo redirige automáticamente a su vista móvil.
+- DCHOC solo puede acceder al perfil/ruta de Daniel Choc.
+- ECIVIL solo puede acceder al perfil/ruta de Edwin Civil.
+- No tienen acceso al Dashboard, Configuración, otros mensajeros ni rutas ajenas.
+- Si todavía no se les ha asignado una ruta, verán su vista con 0 paradas; al asignar y enviar la ruta aparecerán sus gestiones.
+
+GOOGLE MAPS DEMO KEY
+No escriba su clave dentro de este archivo.
+Ingrese con Jefatura/Gerencia -> Configuración -> Google Maps · Piloto -> pegue la Demo Key -> Guardar clave -> Probar geocodificación.
+En Planificador seleccione “Google Maps + tráfico real”.
+Si la Demo Key no habilita Routes/Geocoding, R7.7.1 mantiene respaldo OSRM/Nominatim para que la prueba no se detenga.
+
+REGLAS PRINCIPALES INCORPORADAS
+- 12 módulos principales, incluyendo Inventarios.
+- Cortes 08:00, 09:30, 12:30, 14:00.
+- Ruta secuencial para mensajero.
+- Foto + kilometraje inicial/final AM y PM.
+- Salida esperada dentro de 5–10 min; atraso queda registrado con causa.
+- Espera cliente con alertas 5/10/15 min.
+- “Cliente ya me está atendiendo” separa espera improductiva de atención real.
+- No entregado registra motivo, responsable y causa.
+- Máximo 3 intentos; tercer intento no efectivo = Anulado automáticamente.
+- “Pendiente de corrección” evita reenviar a ruta un pedido con error aún no resuelto.
+- Valor Q del pedido puede ingresarse manualmente por personal autorizado y queda auditado.
+- Historial de cambios de dirección.
+- Bitácora del mensajero separada de Liquidación.
+- Dashboard Ejecutivo 2.0 agrega efectividad primer intento, reintentos, anulados, valor, cambios de dirección y devoluciones.
+- Calidad de pedido por vendedor.
+- Inventario con origen y candidatos a centralización Z16.
+
+IMPORTANTE PARA LA PRESENTACIÓN
+- Quick Tunnel de Cloudflare es para PILOTO/DEMO, no producción definitiva.
+- La URL pública puede cambiar al reiniciar el túnel.
+- La PC servidor debe permanecer encendida y con Internet.
+- Esta versión conserva las 112 imágenes de listas reales y la estructura de SO previamente cargada.

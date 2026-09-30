@@ -1,0 +1,26 @@
+LOGÍSTICA IMFOHSA R7.7.4 PILOTO
+REDISEÑO DEL MÓDULO MENSAJEROS
+==============================
+
+OBJETIVO
+Reducir ruido visual sin eliminar la información operativa necesaria.
+
+CAMBIOS REALIZADOS
+- Tarjetas reducidas de 3 columnas saturadas a 2 columnas más anchas en escritorio.
+- Identificación limpia: iniciales, nombre, rol del día, grupo, hora de entrada y Express.
+- Estado de ruta separado visualmente del resto de métricas.
+- Resumen diario compacto: entregas, KM planificados, KM reales y atraso.
+- AM y PM ahora aparecen como filas comparables, no como dos tarjetas internas grandes.
+- Se mantienen por turno: gestiones, entregas, KM plan, KM real y atraso.
+- Acciones agrupadas en una sola franja inferior:
+  Operación / Bitácora / Liquidación / Acceso móvil.
+- Se agregaron filtros por nombre, rol y estado.
+- Se agregó botón "Guía de accesos" dentro del módulo.
+- Se mantiene Bitácora separada de Liquidación.
+- No se elimina información histórica ni KPI; solo se reorganiza la presentación.
+
+PRINCIPIO DE DISEÑO
+Información principal visible de inmediato.
+Información operativa AM/PM comparable en una sola lectura.
+Acciones juntas al final.
+Menos colores, menos cajas y menos repetición visual.

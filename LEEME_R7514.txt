@@ -1,0 +1,33 @@
+LOGISTICA IMFOHSA R7.5.14 - PLANIFICADOR SEGUN DOCUMENTO
+
+ESTADO DE PRUEBA
+- 50 pedidos cargados para 20/08/2026.
+- 50 pedidos SIN ASIGNAR.
+- 50 pedidos con coordenadas para aparecer como puntos en el mapa.
+- No se genera ninguna polilinea/ruta hasta confirmar una asignacion.
+- 5 pedidos tienen monto menor de Q200 para probar la regla de asignacion manual.
+- Tiempo estandar en cliente: 15 minutos.
+
+SECUENCIA IMPLEMENTADA
+1. Pedido ingresado -> aparece como punto gris en mapa.
+2. El sistema analiza continuamente ubicacion, distancia, corte, ventana, 15 min de servicio y disponibilidad SIN asignar.
+3. Asignacion inteligente calcula alternativas y muestra una propuesta.
+4. Los pedidos siguen sin asignar hasta pulsar CONFIRMAR ASIGNACION.
+5. Al confirmar se asignan mensajeros, se ordenan las paradas y entonces aparecen las rutas.
+6. Los pedidos menores de Q200 permanecen manuales.
+
+GOOGLE MAPS / TRAFICO
+- En Planificador, selector de mapa incluye: Google Maps + trafico real.
+- En Configuracion puede ingresar Google Maps API Key.
+- Para trafico real habilite Maps JavaScript API y Routes API en Google Maps Platform.
+- Con API Key: el mapa usa TrafficLayer y el calculo de ruta usa Google Routes con TRAFFIC_AWARE.
+- Sin API Key: el sistema sigue siendo utilizable con mapa normal y estimacion OSRM + factor de trafico configurado; NO se etiqueta como trafico real.
+- La API Key y facturacion de Google no se incluyen en este paquete.
+
+ESCANEO / FOTO
+- Boton Escanear / tomar foto sigue la secuencia Foto -> OCR -> extraccion -> verificacion -> guardar.
+- Permite enlace al telefono, foto en el dispositivo o carga manual para QA.
+- El pedido queda guardado SIN ASIGNAR y se refleja en Pedidos y Despachos y en el mapa.
+
+IMPORTANTE
+Esta version conserva modulos, roles, costos, flotilla, consulta vendedores, liquidacion, vista movil y enlaces de versiones anteriores.

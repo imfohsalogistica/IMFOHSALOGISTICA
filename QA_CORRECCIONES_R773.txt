@@ -1,0 +1,50 @@
+LOGÍSTICA IMFOHSA — R7.7.3 PILOTO
+CORRECCIONES DE CAMPO 23/08/2026
+
+1. VENTAS
+- Ventas conserva únicamente Consulta Vendedores.
+- Se oculta a Ventas el bloque interno "Calidad del pedido por vendedor".
+- KPI, costos, reprocesos y comparativos de vendedores quedan para Gerencia/Jefatura.
+
+2. DIRECCIONES / MAPA
+CAUSA IDENTIFICADA:
+- Las 78 SO precargadas conservaban coordenadas aproximadas de QA.
+- Esas coordenadas tenían geoValidated=true y la interfaz podía mostrarlas como "Dirección y punto validados".
+- Por eso el texto de la dirección podía ser correcto pero el pin no coincidir exactamente.
+
+CORRECCIÓN:
+- Una coordenada cuyo origen diga "aproximada de prueba" ya NO se considera validada.
+- En Planificador aparece "Punto aproximado de prueba · validar con Google".
+- Se agregó botón "Validar direcciones".
+- Con Google Maps Demo Key configurada, reemplaza el punto aproximado por la geocodificación de la dirección escrita y conserva historial.
+- Una ruta no se puede enviar oficialmente al mensajero mientras tenga puntos aproximados/pendientes.
+
+3. ENTREGA DE RUTA AL MENSAJERO
+CAMBIO DE LÓGICA:
+- Asignar pedidos a Daniel/Edwin NO significa todavía que la ruta fue entregada.
+- La ruta queda en borrador mientras Logística la ordena y valida.
+- Se elimina "Compartir por WhatsApp" de Acciones de ruta.
+- Se agrega "Enviar ruta al mensajero".
+- Al pulsarlo se registra routePublishedAt/routePublishedDate y en ese momento inicia el control de salida 5/10 min.
+- El usuario mensajero ve la ruta publicada entrando con su cuenta desde el mismo enlace HTTPS del piloto.
+- Si entra antes de que Logística publique la ruta, el servidor no entrega las paradas activas.
+
+4. WHATSAPP
+- WhatsApp ya no es el canal oficial para transferir una ruta.
+- El enlace principal del piloto se comparte una vez a cada usuario.
+- Cada mensajero inicia sesión con su propia cuenta.
+- "Ver acceso móvil" queda como herramienta de soporte/preview, no como paso obligatorio de cada despacho.
+
+5. ORDEN MANUAL
+- Se conserva Reordenar ruta manualmente, selector de posición exacta, flechas y drag/drop.
+- El orden persistido alimenta el mapa y la secuencia móvil.
+
+VALIDACIONES TÉCNICAS
+- JavaScript principal: node --check OK.
+- Go: compilación Windows amd64 OK.
+- Go: compilación Linux amd64 OK.
+
+PENDIENTE DE PRUEBA DE CAMPO
+- Configurar la Google Maps Demo Key en la PC del piloto.
+- Ejecutar Validar direcciones y revisar coincidencia física de los pines.
+- Publicar una ruta a DCHOC/ECIVIL y comprobar acceso desde datos móviles.

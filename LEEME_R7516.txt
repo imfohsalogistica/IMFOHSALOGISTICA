@@ -1,0 +1,14 @@
+LOGÍSTICA IMFOHSA R7.5.16
+
+CORRECCIONES PRINCIPALES
+- NLIMA: visualiza Dashboard completo y rutas de Zona 16/Zona 4; modifica solo Zona 16.
+- GOLIVA: visualiza Dashboard completo y rutas de Zona 16/Zona 4; modifica solo Zona 4.
+- GOLIVA abre Planificador directamente en Laboratorio Zona 4.
+- NLIMA abre Planificador directamente en CEDI Zona 16.
+- Los botones Escanear/tomar foto, Asignación inteligente, Ruta libre y Parada manual se habilitan únicamente en el centro autorizado.
+- El servidor conserva bloqueada cualquier modificación del centro contrario.
+- Se incluye MOSTRAR_ENLACE_RED_LOCAL.bat para pruebas desde otra computadora en la misma red.
+
+USUARIOS
+JLEMUS, WFUENTES, NLIMA, GOLIVA, VENTAS1, COBROS1
+Clave temporal: Imfohsa1234/

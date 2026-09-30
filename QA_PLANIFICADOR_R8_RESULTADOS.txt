@@ -1,0 +1,32 @@
+QA PLANIFICADOR DE RUTAS IMFOHSA — MOTOR R8
+Fecha: 21/08/2026
+Base: R7.5.17 actualizada a R7.5.18 + Motor Planificador R8
+
+RESULTADOS
+[OK] JavaScript completo: validación sintáctica Node --check.
+[OK] Servidor Go: compilación Linux amd64.
+[OK] Servidor Go: compilación Windows amd64.
+[OK] Login/API de estado: WFUENTES / jefe_logistica.
+[OK] settings.plannerEngineVersion = R8.0 persistido.
+[OK] Motor 50 pedidos: conservación de pedidos, sin duplicados.
+[OK] Escenario 50: 45 elegibles IA + 5 manuales por regla Q200; 0 perdidos.
+[OK] Motor 120 pedidos: ejecución completa y conservación de pedidos.
+[OK] Escenario 120: 108 elegibles IA + 12 manuales; 0 duplicados/perdidos.
+[OK] Matriz >80: rama de bloques validada con matriz vial simulada.
+[OK] Cuatro cortes tratados de forma independiente.
+[OK] Restricción de retorno aplicada antes de confirmar asignación.
+[OK] Cita imposible: pedido queda sin asignar, no se fuerza una ruta inválida.
+[OK] Regla Q200 convertida a parámetro configurable.
+[OK] Horarios de corte centralizados en settings.routeWindows.
+[OK] Aprendizaje utiliza tiempo real por cliente y desviación ETA/corte.
+[OK] Corrección manual genera afinidad cliente/mensajero para futuras propuestas.
+[OK] Google falla -> servidor intenta OSRM antes de devolver error.
+[OK] OSRM/matriz falla -> frontend conserva operación con respaldo geográfico claramente identificado.
+[OK] Propuesta no modifica messengerId hasta CONFIRMAR ASIGNACIÓN.
+
+LIMITACIÓN DEL ENTORNO DE QA
+El contenedor de prueba bloqueó resolución DNS hacia router.project-osrm.org, por lo que no fue posible verificar una llamada real externa a OSRM desde este entorno. Se validó la ruta de fallback y la rama de matriz vial mediante simulación determinista. En la computadora/servidor de IMFOHSA con Internet se debe ejecutar la prueba final de conectividad real de Google/OSRM.
+
+ESTATUS
+Motor lógico R8: IMPLEMENTADO.
+Prueba externa de proveedor vial en red real IMFOHSA: PENDIENTE DE ENTORNO, no de código.

@@ -1,0 +1,37 @@
+LOGÍSTICA IMFOHSA — R7.7.2 PILOTO
+==================================
+
+OBJETIVO
+Prueba real desde redes diferentes: PC servidor + usuarios por Internet/HTTPS + teléfonos con datos móviles.
+
+INICIO
+1. Descomprima toda la carpeta.
+2. Ejecute INICIAR_PILOTO_INTERNET.bat.
+3. Mantenga abierta la ventana durante toda la prueba.
+4. Espere que se creen:
+   - ENLACE_PILOTO_PUBLICO.txt
+   - ENLACES_PILOTO_PARA_COMPARTIR.txt
+5. Comparta el MISMO enlace HTTPS con todos los usuarios. Cada rol abre su propia vista.
+
+USUARIOS
+JLEMUS, WFUENTES, NLIMA, GOLIVA, VENTAS1, COBROS1, DCHOC y ECIVIL.
+Contraseña temporal: Imfohsa1234/
+
+CORRECCIONES R7.7.2
+- Reordenamiento manual exacto de rutas por posición.
+- Acción “Reordenar ruta manualmente” permite secuencias como 1-2-3-4 → 2-1-4-3.
+- Persistencia del orden por mensajero + fecha + corte.
+- Historial de pedido ahora separa evidencia de entrega, devolución, lista original y tacómetros.
+- Fotografías de entrega se pueden abrir/ampliar desde Historial.
+- Las 78 SO precargadas no tienen evidencia de entrega hasta ser ejecutadas; las 112 imágenes existentes corresponden a listas reales preservadas.
+- Dashboard elimina la gráfica amarrada a Ruta 1/Daniel, Ruta 2/Jeremías, etc. y muestra eficiencia por corte 08:00, 09:30, 12:30 y 14:00.
+- Cada llegada genera historial de visita y se actualiza con resultado Entregado/No entregado.
+- Foto de tacómetro inicial y final se conserva por sesión AM/PM, evitando que PM borre el respaldo de AM.
+- Validación de KM pagables disponible desde Bitácora.
+
+GOOGLE MAPS
+Configuración → Google Maps · Piloto. Pegue allí su Demo Key. Para producción se debe migrar a credenciales estándar restringidas.
+
+ENLACES
+Para la prueba use principalmente ENLACES_PILOTO_PARA_COMPARTIR.txt. Todos ingresan al mismo enlace con usuario/contraseña.
+En Mensajeros → Acceso ruta puede generar un enlace directo opcional para una ruta concreta.

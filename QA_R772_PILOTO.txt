@@ -1,0 +1,82 @@
+LOGÍSTICA IMFOHSA — QA R7.7.2 PILOTO
+====================================
+Fecha de revisión: 23/08/2026
+
+RESULTADO GENERAL
+- API/servidor local: OK.
+- Sintaxis JavaScript activa: OK (node --check).
+- Binario Windows y Linux recompilados: OK.
+- Estado inicial restaurado después de QA: 78 SO, 10 mensajeros, 112 listas reales, 32 líneas de inventario, 0 pedidos asignados.
+- 8 accesos del piloto autenticados correctamente: JLEMUS, WFUENTES, NLIMA, GOLIVA, VENTAS1, COBROS1, DCHOC, ECIVIL.
+- Primera y última imagen de las 112 listas reales servidas correctamente como image/jpeg.
+
+CORRECCIONES DE LAS CAPTURAS DEL USUARIO
+1) ORDEN MANUAL 1-2-3-4 → 2-1-4-3: CORREGIDO.
+   Causa: la vista activa seguía heredando una capa antigua que mostraba únicamente flechas ↑/↓ y ocultaba el control de posición exacta.
+   Corrección: cada parada asignada muestra un selector "Posición N" y la ruta tiene la acción "Reordenar ruta manualmente". La secuencia se guarda por fecha + corte + mensajero en routePosition.
+   Prueba backend: se guardó y leyó correctamente una secuencia de cuatro SO en posiciones 2-1-4-3; después se restauró el estado limpio.
+
+2) FOTOS DE RESPALDO: CORREGIDO EL VISOR Y ACLARADO EL ORIGEN.
+   Causa: las 78 SO precargadas nunca han sido ejecutadas por un mensajero; por eso actualmente tienen 0 fotografías de entrega. Las 112 imágenes que ya existen son listas/documentos de despacho y no se puede inventar una relación 1:1 entre 112 imágenes y 78 SO.
+   Corrección: Historial separa evidencia de entrega, devolución, lista/documento original y fotos de tacómetro. Las fotografías que tome el mensajero al ejecutar una entrega quedan guardadas y se pueden abrir/ampliar. Las 112 listas reales siguen accesibles desde el visor de documentos.
+
+3) DASHBOARD "RUTA 1-4" AMARRADO A NOMBRES: CORREGIDO.
+   Causa: el Dashboard heredaba una tarjeta de una versión anterior que asumía cuatro rutas fijas con nombres específicos.
+   Corrección: la renderización activa reemplaza esa tarjeta por "Eficiencia por corte operativo": 08:00, 09:30, 12:30 y 14:00. Los mensajeros son dinámicos según la asignación real.
+
+HALLAZGO ADICIONAL DE QA
+- Créditos y Cobros inicialmente no podía guardar la validación financiera porque el nuevo endpoint pasaba por una validación genérica reservada a Gerencia/Jefatura.
+- Se corrigió el endpoint para autorizar explícitamente a creditos_cobros y a roles de Gerencia/Jefatura.
+- Se probó con COBROS1: estado, acción e historial financiero persistieron correctamente; luego el estado de prueba fue restaurado.
+
+REGLAS OPERATIVAS REVISADAS Y APLICADAS
+- Cortes: 08:00, 09:30, 12:30, 14:00.
+- Grupos semanales A/B y entrada 08:00/09:00; rotación semanal.
+- Roles operativos Ruta, Panel, Institucional y Express.
+- Express con SLA 120 minutos y prioridad dentro del planificador.
+- Pedidos no asignados permanecen visibles y sin línea de ruta hasta asignación.
+- Orden manual exacto, flechas como respaldo y persistencia de routePosition.
+- Optimización vial con Google cuando esté configurado y respaldo OSRM.
+- Google geocoding/rutas preparados en Configuración → Google Maps · Piloto.
+- Ruta entregada registra routeAssignedAt.
+- Alerta de salida a los 5 minutos y salida tardía al superar el límite de 10 minutos; guarda responsable/motivo.
+- Mensajero: foto + KM inicial obligatorios antes de iniciar ruta.
+- Ejecución secuencial de paradas.
+- Llegué inicia espera; alertas 5/10/15 minutos.
+- "Cliente ya me está atendiendo" separa tiempo de espera de tiempo real de atención.
+- Evidencias de entrega: 2–5 fotografías según configuración; devolución requiere evidencia.
+- No entregado registra motivo, responsable y clasificación.
+- Pedido con causa corregible puede quedar Pendiente de corrección antes de reintentarse.
+- Máximo 3 intentos; tercer intento no efectivo puede quedar Anulado conservando historial.
+- Cada llegada genera visitHistory y se cierra con resultado Entregado/No entregado.
+- Historial de visitas por cliente: día, semana y mes; cambios de dirección y devoluciones.
+- Historial de valor manual y cambios de dirección conservados.
+- Vendedores: calidad del pedido, errores atribuibles a Ventas, reintentos, devoluciones y cambios de dirección.
+- Créditos: plazo y estado de pago separados; instrucción al mensajero validada por Créditos/Gerencia.
+- Tacómetro inicial/final guardado por sesión AM/PM; PM ya no sobrescribe respaldo AM.
+- KM planificado, real y validado pagable disponibles en Bitácora.
+- Parámetros existentes de rendimiento de motos y depreciación Q0.37/km permanecen configurables.
+- Bitácora del mensajero separada de Liquidación.
+- 12 módulos principales para Gerencia/Jefatura: Dashboard, Planificador, Pedidos, Clientes Odoo, Mensajeros, Créditos y Cobros, Consulta Vendedores, Inventarios, Flotilla, Solicitud de Vehículo, Combustibles y Costos, Configuración.
+- Permisos por rol conservados; mensajeros DCHOC/ECIVIL entran directamente a su vista móvil.
+- Un solo enlace HTTPS público se usa para todos los usuarios; el rol determina lo que cada uno ve.
+
+DATOS INICIALES DEL PILOTO
+- 78 SO estructuradas y limpias para pruebas.
+- 112 imágenes únicas de listas reales preservadas.
+- 32 líneas de inventario estructuradas.
+- 10 mensajeros.
+- 78/78 pedidos inicialmente sin asignar.
+- Las coordenadas precargadas son aproximaciones QA; deben reemplazarse/validarse con Google antes de considerar producción.
+
+PENDIENTE / PARCIAL POR DECISIÓN DEL PROYECTO
+- Flotilla: conserva su base actual; rediseño profundo se hará después, aunque ya puede recibir KM/uso.
+- Solicitud de Vehículo: conserva su base actual; rediseño profundo posterior.
+- Combustibles y Costos: la interfaz profunda se mejorará después; desde ahora recibe KM y validación para no perder histórico.
+- Base central del piloto sigue siendo el estado persistente del servidor actual; PostgreSQL/Supabase queda para la siguiente etapa empresarial.
+- Cloudflare Quick Tunnel no puede certificarse desde este entorno sin Internet externo; debe validarse en la PC real del usuario.
+- Google Maps Demo Key no se incluyó ni expuso; debe pegarse en Configuración y probarse desde la red real.
+- No se realizó E2E visual completo con cámara/GPS móvil desde este entorno. La prueba final debe hacerse con los dos teléfonos y redes distintas.
+
+CONCLUSIÓN
+R7.7.2 queda lista para el piloto/prueba de campo. No se declara producción empresarial: aún se requiere la prueba externa real de HTTPS, Google, cámara, GPS, concurrencia de usuarios y rutas AM/PM.

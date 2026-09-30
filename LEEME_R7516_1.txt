@@ -1,0 +1,25 @@
+LOGISTICA IMFOHSA R7.5.16.1
+
+CORRECCION DE RED LOCAL
+La version anterior podia mostrar una direccion incorrecta del tipo:
+http://   :8815/...
+Chrome convertia los espacios en %%20 y por eso el enlace no abria.
+
+AHORA:
+1. INICIAR_IMFOHSA.bat inicia la aplicacion y muestra el enlace de red real.
+2. MOSTRAR_ENLACE_RED_LOCAL.bat obtiene la IP directamente desde /api/info del servidor.
+3. El enlace se guarda en ENLACE_RED_LOCAL.txt.
+4. PROBAR_ACCESO_OTRA_PC.bat muestra un diagnostico basico.
+5. No se modifica automaticamente Windows Firewall ni el antivirus.
+
+PARA OTRA COMPUTADORA
+Debe usar algo parecido a:
+http://192.168.1.25:8815/index.html?v=75161
+NO use localhost.
+
+Ambas computadoras deben estar en la misma red/Wi-Fi.
+Si Windows Firewall solicita permiso para server_imfohsa.exe, permita solo REDES PRIVADAS.
+
+USUARIOS DE PRUEBA
+JLEMUS, WFUENTES, NLIMA, GOLIVA, VENTAS1, COBROS1
+Clave temporal: Imfohsa1234/

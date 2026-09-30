@@ -1,0 +1,13 @@
+LOGÍSTICA IMFOHSA R7.5.15
+
+Actualización basada en Actualizaciones_Aplicacion_IMFOHSA_Ordenadas_Editable.docx.
+
+Usuarios de prueba (todos con clave temporal Imfohsa1234/):
+- JLEMUS: Gerente de Operaciones
+- WFUENTES: Jefe de Logística
+- NLIMA: Asistente de Logística Zona 16
+- GOLIVA: Coordinador de Logística Zona 4
+- VENTAS1: solo Consulta de pedido
+- COBROS1: solo Créditos y cobros; puede crear cobros y descargar
+
+Se conservan los 50 pedidos QA actuales, sin asignar.

@@ -1,0 +1,28 @@
+LOGÍSTICA IMFOHSA R7.7.4 PILOTO — QA
+====================================
+
+VALIDACIONES REALIZADAS
+- Sintaxis JavaScript completa: OK (node --check).
+- Compilación servidor Linux amd64: OK.
+- Compilación servidor Windows amd64: OK.
+- API /api/health: OK.
+- Login WFUENTES / Imfohsa1234/: OK.
+- Login DCHOC / Imfohsa1234/: OK; vinculado a m_daniel y ruta móvil.
+- Versión visible en index.html: R7.7.4 PILOTO.
+- Consola del servidor: R7.7.4 PILOTO.
+- Rediseño Mensajeros presente: filtros + tarjetas compactas + AM/PM + acciones.
+- Guía de accesos integrada en Mensajeros y botón superior.
+
+LIMITACIONES DE ESTE ENTORNO
+- El túnel Cloudflare no pudo probarse aquí porque este entorno bloquea la descarga/red externa.
+- Debe validarse en la PC Windows del usuario con Internet.
+- Google Maps Demo Key debe validarse en la red real del piloto.
+
+NO SE MODIFICÓ
+- Reglas operativas de cortes.
+- Lógica de envío formal de ruta.
+- Control de salida 5/10 minutos.
+- Espera cliente 5/10/15 minutos.
+- Tacómetro AM/PM.
+- Historial, Bitácora, Liquidación y KPI.
+- Datos reales cargados del piloto.

@@ -1,0 +1,23 @@
+LOGÍSTICA IMFOHSA — USUARIOS PILOTO R7.7.2
+===========================================
+Contraseña temporal común del piloto: Imfohsa1234/
+
+ADMINISTRACIÓN
+- JLEMUS   — Gerente de Operaciones
+- WFUENTES — Jefe de Logística
+- NLIMA    — Asistente de Logística Zona 16
+- GOLIVA   — Coordinador de Logística Zona 4
+- VENTAS1  — Ventas
+- COBROS1  — Créditos y Cobros
+
+MENSAJEROS DEL PILOTO
+- DCHOC  — Daniel Choc — vinculado al perfil m_daniel
+- ECIVIL — Edwin Civil — vinculado al perfil m_edwin
+
+REGLA DE ACCESO MENSAJERO
+Todos abren el MISMO enlace HTTPS público del piloto.
+Al iniciar sesión como DCHOC o ECIVIL, la plataforma redirige automáticamente a la vista móvil de SU PROPIA RUTA.
+Un mensajero no puede abrir la ruta del otro con su sesión.
+
+IMPORTANTE
+Estas credenciales son temporales para el piloto. Para producción deben sustituirse por contraseñas individuales.

@@ -1,0 +1,22 @@
+LOGÍSTICA IMFOHSA R7.5.16 — PRUEBAS DE PERMISOS Y RED
+
+NLIMA
+1. Iniciar sesión con NLIMA / Imfohsa1234/
+2. Dashboard debe abrir y mostrar la operación completa en modo visualización.
+3. Planificador debe abrir por defecto CEDI Zona 16.
+4. En Zona 16: Escanear/tomar foto, Asignación inteligente, Ruta libre y Parada manual deben estar habilitados.
+5. Cambiar a Zona 4: puede visualizar las rutas, pero los controles de modificación deben quedar bloqueados.
+
+GOLIVA
+1. Iniciar sesión con GOLIVA / Imfohsa1234/
+2. Dashboard debe abrir y mostrar la operación completa en modo visualización.
+3. Planificador debe abrir por defecto Laboratorio Zona 4.
+4. En Zona 4: Escanear/tomar foto, Asignación inteligente, Ruta libre y Parada manual deben estar habilitados.
+5. Todo pedido nuevo creado desde GOLIVA debe guardarse con centerId=lab4.
+6. Cambiar a Zona 16: puede visualizar, pero no modificar.
+
+RED LOCAL
+- Ejecute MOSTRAR_ENLACE_RED_LOCAL.bat para obtener el enlace de la PC principal.
+- localhost NO funciona en otra computadora.
+- El enlace de red local permite probar usuarios y datos si ambos equipos están en la misma red.
+- Para cámara/GPS, use HTTPS.

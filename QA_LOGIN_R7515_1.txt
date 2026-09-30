@@ -1,0 +1,26 @@
+LOGÍSTICA IMFOHSA R7.5.15.1 — PRUEBAS DE LOGIN
+
+CORRECCIÓN REALIZADA
+- Se eliminó el código incrustado que cerraba prematuramente el JavaScript principal.
+- Esa falla era la causa de que aparecieran literalmente ${esc(title)} y ${body}.
+- La pantalla de inicio vuelve a mostrar Usuario y Contraseña vacíos.
+- Se agregó control anti-caché para evitar cargar la pantalla defectuosa.
+- INICIAR_IMFOHSA.bat abre la versión corregida con un parámetro de actualización.
+
+USUARIOS VALIDADOS
+- JLEMUS
+- WFUENTES
+- NLIMA
+- GOLIVA
+- VENTAS1
+- COBROS1
+
+CLAVE TEMPORAL
+Imfohsa1234/
+
+PERMISOS CONSERVADOS
+- NLIMA visualiza Zona 16 y Zona 4; modifica solo Zona 16.
+- GOLIVA visualiza Zona 16 y Zona 4; modifica solo Zona 4.
+- JLEMUS / WFUENTES: acceso completo.
+- VENTAS1: Consulta de pedido.
+- COBROS1: Créditos y cobros.

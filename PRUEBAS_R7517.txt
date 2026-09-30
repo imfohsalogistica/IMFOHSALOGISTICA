@@ -1,0 +1,35 @@
+PRUEBAS R7.5.17
+
+A. PLANIFICADOR
+[ ] Los 50 pedidos permanecen sin asignar al inicio.
+[ ] Los pedidos con ubicación aparecen como puntos; no se dibuja ruta hasta asignarlos.
+[ ] Mover el pin cambia latitud/longitud y la ubicación se guarda.
+[ ] Parada manual genera/valida ubicación antes de guardar.
+[ ] Arrastrar gestiones cambia el orden sin cambiar de mensajero.
+[ ] Refrescar conserva el nuevo orden.
+[ ] Disponibilidad activo/ausente se guarda y persiste.
+[ ] Asignación inteligente muestra activos/ausentes antes de continuar.
+[ ] Ausentes no participan en la propuesta.
+[ ] Optimizar recalcula y vuelve al mejor orden estimado.
+[ ] Asignación manual conserva visible el mensajero seleccionado.
+
+B. MENSAJERO
+[ ] Iniciar ruta explica cualquier requisito faltante.
+[ ] Primera gestión se activa; solo una gestión está activa.
+[ ] Al cerrar una gestión se habilita la siguiente.
+[ ] Se recalculan ETA futuras y retorno.
+[ ] Se muestran km estimados y restantes.
+
+C. CLIENTES/DOCUMENTOS
+[ ] Documento leído llena cada campo correcto y permite corregir.
+[ ] Cliente nuevo aparece en Clientes Odoo.
+[ ] Nueva dirección se agrega sin borrar direcciones anteriores.
+[ ] No se crean direcciones duplicadas.
+
+D. WHATSAPP / RED
+[ ] Compartir muestra LAN (misma Wi-Fi) y HTTPS (cualquier red).
+[ ] LAN abre en teléfono conectado a la misma Wi-Fi.
+[ ] HTTPS se verifica antes de habilitar WhatsApp externo.
+[ ] Con datos móviles, HTTPS abre la ruta/formulario.
+[ ] Cámara/fotos funcionan usando HTTPS.
+[ ] GPS del navegador funciona usando HTTPS y permiso del usuario.

@@ -1,0 +1,27 @@
+LOGÍSTICA IMFOHSA R7.5.17
+
+ACTUALIZACIONES FUNCIONALES 21/08/2026
+- Secuencia de ruta y recálculo de tiempos.
+- Lectura/verificación de documentos sin inventar campos.
+- Validación de ubicación con mapa y pin movible.
+- Parada manual con geocodificación y coordenadas.
+- Clientes Odoo con múltiples direcciones sin duplicar.
+- Reordenamiento por arrastre y persistencia.
+- Disponibilidad activa/ausente persistente.
+- Resumen de disponibilidad antes de asignación inteligente.
+- Inicio de ruta con explicación de requisitos, mapa y kilometraje.
+- Optimizar restaura el orden calculado por la lógica inteligente.
+- Asignación manual conserva la posición visual del planificador.
+
+ENLACES PARA PRUEBAS
+1) LAN / MISMA WIFI: http://192.168.x.x:8815/...
+   - PC principal y teléfono/otra PC deben estar en la misma red.
+2) HTTPS / CUALQUIER RED: https://xxxxx.trycloudflare.com/...
+   - Puede abrir desde datos móviles u otra Wi-Fi.
+   - Recomendado para cámara y GPS.
+   - La aplicación no habilita WhatsApp externo hasta verificar el HTTPS.
+
+IMPORTANTE
+- Mantenga INICIAR_IMFOHSA.bat abierto.
+- El Quick Tunnel es temporal y puede cambiar al reiniciar.
+- Para una URL fija de producción se migrará a un túnel administrado/dominio.

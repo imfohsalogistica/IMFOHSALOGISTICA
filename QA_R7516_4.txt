@@ -1,0 +1,28 @@
+LOGÍSTICA IMFOHSA R7.5.16.4 — ORDEN DE MÓDULOS
+
+ORDEN PARA GERENCIA GENERAL / JEFATURA DE LOGÍSTICA:
+1. Dashboard
+2. Planificador de rutas
+3. Pedidos y despachos
+4. Clientes Odoo
+5. Mensajeros
+6. Créditos y cobros
+7. Consulta vendedores
+8. Flotilla
+9. Solicitud de vehículo
+10. Combustibles y costos
+11. Configuración
+
+COMBUSTIBLES Y COSTOS — LÓGICA CONSERVADA
+- Mensajería / motos y Paneles / vehículos se mantienen separados.
+- Selector: Mensajería motos / Paneles-vehículos / Todos los centros de costos.
+- Motos: combustible, depreciación, parqueos/otros, costo por entrega y tendencia mensual.
+- Paneles: SO, valor factura, km, rendimiento, combustible, depreciación por km, parqueos/peajes/otros, costo total y % costo/factura.
+- Depreciación panel: (valor compra - valor residual) / vida útil en km.
+- Parqueos, peajes y otros extraordinarios permanecen como datos manuales trazables.
+- Configuración conserva precio de combustible, Q/km moto, rendimiento 125cc/150cc y parámetros financieros por vehículo.
+
+PERMISOS SIN CAMBIOS
+- NLIMA y GOLIVA conservan los módulos y permisos definidos previamente.
+- VENTAS1 conserva Consulta vendedores únicamente.
+- COBROS1 conserva Créditos y cobros según su perfil.

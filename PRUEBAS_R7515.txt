@@ -1,0 +1,15 @@
+PRUEBAS R7.5.15
+1. Login: confirmar campos vacíos.
+2. Probar cada usuario y módulos visibles.
+3. Planificador: 50 pedidos siguen sin asignar; validar pines.
+4. Asignar una ruta y usar flechas arriba/abajo; recargar y confirmar orden.
+5. Probar HORARIO DE CORTE PRUEBA: 09:30 AM y 12:30 PM.
+6. Pedidos: escribir rápido; búsqueda debe esperar ~700 ms. Confirmar que no existe Imprimir ni Importar/Escanear.
+7. Registrar un no entregado y revisar historial de visitas.
+8. Exportar Pedidos y confirmar encabezados en español + historial.
+9. Clientes Odoo: solo Excel/CSV y Cliente manual; captura del Planificador alimenta cliente.
+10. Créditos y cobros: COBROS1 crea cobro; aparece en No asignadas y Pedidos. Descargar Liquidación de ruta.
+11. Consulta de pedido: VENTAS1 solo visualiza; no hay Buscar ahora ni Compartir WhatsApp.
+12. Mensajeros: revisar A.M./P.M.
+13. Ruta móvil: primera evidencia reemplaza firma; después de entrega se recalcula mapa/ETA restante.
+14. Configuración: revisar alertas de autoanálisis después de generar actividad.

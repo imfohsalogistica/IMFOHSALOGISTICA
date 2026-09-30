@@ -1,0 +1,48 @@
+PRUEBAS RECOMENDADAS R7.5.14
+
+A. ARRANQUE
+1. Extraer en C:\IMFOHSA_R7514.
+2. Ejecutar INICIAR_IMFOHSA.bat.
+3. Ingresar admin2 / IMFOHSA2026.
+4. Seleccionar fecha 20/08/2026.
+
+B. 50 PEDIDOS SIN ASIGNAR
+1. Abrir Planificador.
+2. Confirmar NO ASIGNADAS = 50.
+3. Confirmar que aparecen 50 puntos grises en mapa.
+4. Confirmar que NO hay lineas de ruta.
+5. Revisar panel Analisis continuo sin asignar.
+
+C. ASIGNACION INTELIGENTE
+1. Pulsar Asignacion inteligente.
+2. Debe mostrar propuesta antes de asignar.
+3. Cerrar/Cancelar: los 50 siguen sin asignar.
+4. Abrir nuevamente y confirmar.
+5. Solo entonces deben aparecer rutas por mensajero.
+6. Los pedidos menores de Q200 deben quedar pendientes/manuales.
+
+D. GOOGLE TRAFICO
+1. Configuracion -> Google Maps API Key.
+2. Guardar una Key valida con Maps JavaScript API + Routes API.
+3. Planificador -> Google Maps + trafico real.
+4. Debe verse TrafficLayer.
+5. Al confirmar asignacion, las rutas deben calcular ETA/distancia con Google Routes TRAFFIC_AWARE.
+6. Sin Key, debe mostrar aviso y permitir volver al mapa normal.
+
+E. ESCANEO
+1. Planificador -> Escanear / tomar foto.
+2. Probar enlace telefono, foto local y carga manual.
+3. Verificar datos antes de guardar.
+4. Al guardar, el pedido aparece en Pedidos y Despachos y como punto sin asignar.
+
+F. ENLACES
+1. Probar portal vendedor, ruta mensajero, solicitud vehiculo, flotilla/fotos y carga de cliente.
+2. El enlace externo solo debe compartirse despues de verificar HTTPS.
+
+G. MOVIL
+1. Asignar una ruta y compartirla.
+2. Foto odometro inicial obligatoria.
+3. Llegue habilita Entregar.
+4. Evidencias 2-5 y firma.
+5. No se puede saltar a una parada posterior.
+6. Ultima parada -> ETA a CEDI -> Llegue al CEDI -> odometro final -> cerrar.

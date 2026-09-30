@@ -1,0 +1,13 @@
+LOGÍSTICA IMFOHSA · R7.6.0 TEST
+ESCENARIO DE LISTAS REALES
+
+- 112 imágenes reales únicas preservadas en uploads/listas_reales.
+- 78 SO estructuradas en el escenario de prueba del Planificador.
+- 32 líneas de inventario (Producto, Ubicación, Cantidad, Existencia, Desde, A) estructuradas desde listas suficientemente legibles.
+- 10 mensajeros operativos: 8 Ruta + 1 Panel + 1 Institucional; roles rotativos.
+- 2 pedidos marcados como Express de prueba con SLA de 120 minutos.
+
+IMPORTANTE:
+Las 112 imágenes están disponibles en la bandeja “Listas reales”. No se creó una SO inventada para cada imagen: algunas fotografías son páginas adicionales, documentos repetidos visualmente o casos que todavía requieren validación humana. Las 78 SO estructuradas son las que se pudieron normalizar con suficiente confianza a partir del aprendizaje realizado con el usuario.
+
+Las coordenadas incluidas en el escenario son PUNTOS APROXIMADOS DE PRUEBA para hacer visibles los pedidos en el mapa. Antes de operar una entrega real debe validarse/geocodificarse la dirección exacta.

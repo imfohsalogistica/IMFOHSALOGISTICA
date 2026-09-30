@@ -1,0 +1,67 @@
+LOGÍSTICA IMFOHSA — R7.7.2 PILOTO
+REVISIÓN DE CORRECCIONES DE CAMPO · 23/08/2026
+
+CORRECCIONES CRÍTICAS APLICADAS
+1. ORDEN MANUAL DE RUTA
+   - Ya no depende únicamente del arrastre.
+   - Cada parada tiene selector directo de posición.
+   - En Acciones de ruta existe "Reordenar ruta manualmente".
+   - Permite cambios arbitrarios como 1-2-3-4 -> 2-1-4-3.
+   - El orden se guarda por mensajero + fecha + corte y se reutiliza en mapa/ruta móvil.
+   - No mezcla cortes operativos distintos.
+   Causa anterior: la interfaz antigua dependía de drag/drop y flechas; en ciertos renders quedaban capas heredadas y el cambio visual no era suficientemente confiable.
+
+2. EVIDENCIAS EN PEDIDOS Y DESPACHOS
+   - La tabla muestra columna Evidencia.
+   - Si hay fotos, se puede abrir el historial y visualizar miniaturas/grande.
+   - También muestra fotografías de devolución y fotos de tacómetro relacionadas cuando existen.
+   - Las 112 listas reales siguen disponibles desde el visor de documentos.
+   Causa anterior: la versión R7.7.1 priorizó trazabilidad/valor e intentos y dejó la evidencia dentro del historial sin acceso suficientemente visible.
+   Nota: las 78 SO estructuradas no tienen una relación 1:1 confiable con las 112 imágenes fuente. No se inventó esa asociación; se conserva el visor completo de listas reales.
+
+3. DASHBOARD — RUTAS DINÁMICAS
+   - Se eliminó de la vista activa el concepto fijo "Eficiencia por ruta · 4 rutas" ligado a Daniel/Jeremías/Roberto/Miguel.
+   - Se reemplaza por eficiencia por corte operativo 08:00, 09:30, 12:30 y 14:00.
+   - Los mensajeros se derivan de las asignaciones reales del período.
+   Causa anterior: el Dashboard conservaba un bloque visual legado de una versión anterior aunque la lógica del Planificador ya era dinámica.
+
+REGLAS VERIFICADAS EN CÓDIGO / API
+- 12 módulos principales: Dashboard, Planificador, Pedidos, Clientes Odoo, Mensajeros, Créditos y Cobros, Consulta Vendedores, Inventarios, Flotilla, Solicitud de Vehículo, Combustibles y Costos, Configuración.
+- 78 SO estructuradas, 112 imágenes reales y 10 mensajeros conservados.
+- Usuarios piloto de Daniel y Edwin activos.
+- Ruta secuencial: el mensajero no puede cerrar una parada posterior antes de la primera abierta.
+- Foto de tacómetro inicial y final; sesiones AM/PM con km real.
+- Salida: rutaAssignedAt + control de 5/10 min y causa de atraso.
+- Cliente: Llegué -> Esperando; botón Iniciar atención separa tiempo de servicio de espera.
+- Alertas de espera 5/10/15 min.
+- Evidencias de entrega 2–5 según configuración; devolución con fotos.
+- Intentos fallidos; al tercer intento la gestión se anula/bloquea salvo reapertura autorizada.
+- Historial de dirección y auditoría del valor manual.
+- Créditos y Cobros como estado financiero oficial: plazo, estado, medio, referencia e instrucción al mensajero.
+- Devoluciones con motivo y responsable de origen.
+- Bitácora AM/PM separada de Liquidación.
+- KM planificados, reales y validación de KM pagables.
+- Google Maps: clave configurable, mapa TrafficLayer, geocodificación y Routes cuando la clave lo permita; fallback disponible.
+- Inventarios conservado como módulo principal y análisis de centralización.
+- Dashboard Ejecutivo 2.0 y calidad por vendedor.
+
+PRUEBAS TÉCNICAS EJECUTADAS
+- JavaScript inline: node --check OK.
+- Servidor /api/health: OK.
+- Login WFUENTES: OK.
+- Login DCHOC: OK y redirección a perfil m_daniel.
+- Estado central: 78 pedidos, 10 mensajeros, 112 documentos reales.
+
+PENDIENTES / LIMITACIONES CONOCIDAS DEL PILOTO
+A. Google Maps real debe probarse con la Demo Key del usuario y su conexión de Internet. La integración está preparada, pero no se puede certificar desde este entorno la cuota/capacidades concretas de esa clave.
+B. Modo offline completo (cola IndexedDB + resincronización de fotos/eventos) NO está implementado todavía. El piloto requiere conexión activa para confirmar eventos. No se agregó de último momento para no arriesgar la estabilidad de la presentación.
+C. El piloto usa una PC como servidor central + Cloudflare Tunnel. Si esa PC se apaga o se cierra el lanzador, el acceso externo deja de funcionar. Es adecuado para el piloto, no para producción empresarial.
+D. La base central del piloto aún no es PostgreSQL empresarial. La migración a base transaccional/cloud se hará después de validar el flujo real.
+E. Flotilla, Solicitud de Vehículo y Combustibles y Costos conservan su base actual; sus rediseños profundos quedan para la siguiente iteración, tal como se acordó. Sí reciben/consumen información de km y operación cuando corresponde.
+
+ACCESO DEL PILOTO
+- Ejecutar INICIAR_PILOTO_INTERNET.bat en la PC servidor.
+- Se genera ENLACE_PILOTO_PUBLICO.txt y ENLACES_PILOTO_PARA_COMPARTIR.txt.
+- El MISMO enlace HTTPS se comparte a todos los usuarios.
+- Cada usuario inicia sesión y el sistema aplica su rol.
+- Para un mensajero también existe: Mensajeros -> Acceso ruta (opcional).

@@ -1,0 +1,22 @@
+LOGÍSTICA IMFOHSA R7.5.16.3 — ORDEN DE MÓDULOS
+
+ORDEN DEFINITIVO PARA PERFILES ADMINISTRATIVOS:
+1. Dashboard
+2. Planificador de rutas
+3. Pedidos y despachos
+4. Clientes Odoo
+5. Mensajeros
+6. Créditos y cobros
+7. Consulta vendedores
+8. Flotilla
+9. Solicitud de vehículo
+10. Configuración
+
+CAMBIOS:
+- Se restauró Consulta vendedores en el menú administrativo.
+- Se conservó su búsqueda automática al dejar de escribir.
+- La búsqueda continúa funcionando por nombre de vendedor o número de SO.
+- Ventas mantiene acceso exclusivo y de solo visualización a Consulta vendedores.
+- Créditos y cobros conserva su perfil y módulo independiente.
+- Combustibles y costos no aparece en el menú conforme a la lista solicitada; su código/datos no se eliminaron.
+- Se conservaron permisos de NLIMA y GOLIVA ya definidos.

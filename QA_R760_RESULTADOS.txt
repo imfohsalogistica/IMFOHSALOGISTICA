@@ -1,0 +1,57 @@
+QA LOGÍSTICA IMFOHSA · R7.6.0 TEST
+Fecha de construcción: 23/08/2026
+
+Resultado interno API/integridad: 30/30 comprobaciones aprobadas.
+JavaScript: node --check APROBADO.
+Go: binarios Windows y Linux compilados correctamente.
+
+COMPROBACIONES:
+[OK] Servidor inicia y health responde — {"ok":true,"version":1}
+[OK] Login Jefe de Logística — {"name":"Wilian Fuentes","ok":true,"role":"jefe_logistica","username":"WFUENTES"}
+[OK] 78 SO reales estructuradas — 78
+[OK] 112 imágenes reales preservadas — 112
+[OK] 32 líneas inventario estructuradas — 32
+[OK] 10 mensajeros operativos — 10
+[OK] Todas las SO de prueba están No asignadas — 78
+[OK] Todos los pedidos tienen punto visible de prueba — 78/78
+[OK] Cuatro cortes válidos — Counter({'09:30': 30, '14:00': 20, '08:00': 19, '12:30': 9})
+[OK] Orígenes de bodega estructurados — Counter({'BZ4': 74, 'CDZ16': 2, 'BUSAC': 1, 'CDXEL': 1})
+[OK] Express prueba con SLA 120 min — S308127,S308954
+[OK] Enlace de ruta rápido para WhatsApp — 0.006s lan
+[OK] PUT estado / routePosition — {"ok":true,"version":3}
+[OK] routePosition persiste tras recarga — 4
+[OK] Login Asistente Zona 16 — {"name":"N. Lima","ok":true,"role":"asistente_z16","username":"NLIMA"}
+[OK] Asistente guarda disponibilidad — {"ok":true,"version":4}
+[OK] Disponibilidad persiste — Ausente
+[OK] Sirve lista_real_001.jpg — 200 image/jpeg
+[OK] Sirve lista_real_112.jpg — 200 image/jpeg
+[OK] Código/UI contiene Escanear / cargar lista
+[OK] Código/UI contiene Analizar corte y proponer rutas
+[OK] Código/UI contiene Express 2h
+[OK] Código/UI contiene Turnos y disponibilidad
+[OK] Código/UI contiene Mostrar rutas: Todas
+[OK] Código/UI contiene Corte operativo: Todos
+[OK] Código/UI contiene Origen e inventario
+[OK] Código/UI contiene Revisión automática
+[OK] Código/UI contiene r8RoadMatrix(points)
+[OK] Código/UI contiene r760_week_group
+[OK] JavaScript syntax node --check — PASS
+
+VALIDACIONES ADICIONALES:
+- 78/78 pedidos tienen coordenadas aproximadas de prueba y aparecen como elegibles para mapa.
+- Los 78 pedidos arrancan sin mensajero para probar la asignación.
+- Los cuatro cortes usados son 08:00, 09:30, 12:30 y 14:00.
+- Origen estructurado en pedidos: BZ4 / CDZ16 / BUSAC / CDXEL.
+- routePosition persiste por API tras guardar y recargar.
+- Disponibilidad de Asistente Zona 16 persiste por API.
+- /api/share/driver?fast=1 respondió en ~0.006 s en prueba local.
+- El selector heredado Ruta 1–4 se sustituye en ejecución por Mostrar rutas dinámico.
+- La asignación/optimización R7.6 consulta r8RoadMatrix; si OSRM no responde usa respaldo geográfico identificado.
+
+LÍMITES DE ESTE ENTORNO DE QA:
+- El navegador Chromium de esta sesión bloquea navegación HTTP local por política administrativa, por lo que no fue posible completar automatización E2E visual con clics reales en navegador.
+- Google Maps/Traffic y OSRM externos no pueden certificarse aquí con Internet real. La plataforma mantiene fallback y debe validarse en la PC/servidor de IMFOHSA.
+- WhatsApp fuera de la red requiere que el enlace HTTPS público esté activo y verificado en la red real.
+- Los puntos geográficos del escenario real son aproximados para QA; requieren validación antes de despacho real.
+
+ESTADO: versión de prueba lista para validación operativa del usuario. No se declara producción 100% hasta completar las pruebas reales de navegador, tráfico, GPS, móvil y HTTPS.

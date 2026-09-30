@@ -1,0 +1,100 @@
+REVISIÓN CONSOLIDADA — REGLAS APRENDIDAS R7.7.2
+================================================
+
+Este archivo resume las reglas consolidadas que se deben conservar durante el piloto.
+
+OPERACIÓN Y CORTES
+- 10 mensajeros totales; 8 Ruta, 1 rol Panel y 1 rol Institucional, con rotación posible.
+- 8 Ruta divididos en grupos A/B de 4; entrada 08:00/09:00 y rotación semanal.
+- Cortes 08:00, 09:30, 12:30, 14:00.
+- Express: SLA máximo 2 horas.
+- Disponibilidad/ausencia/rol operativo condicionan asignación.
+
+PEDIDOS Y LISTAS
+- SO como identificador operativo principal.
+- Leer cliente, dirección, teléfono, vendedor, instrucciones, origen, condiciones de pago, productos e inventario cuando existan.
+- El valor Q se captura manualmente por Asistente autorizado, Jefe o Gerencia y conserva auditoría.
+- Direcciones no se borran: cambios conservan historial.
+- No inventar datos cuando una lista/documento no pueda asociarse con certeza.
+
+PLANIFICADOR
+- Todos los pedidos ubicables deben aparecer en mapa.
+- No asignados: punto sin ruta.
+- Asignados: secuencia + ruta.
+- Reordenamiento exacto por routePosition y acción manual completa.
+- Orden debe coincidir en lista, mapa y teléfono después de guardar/recargar.
+- Optimización considera restricciones, Express, retorno, vialidad y tráfico según disponibilidad de Google/OSRM.
+
+MENSAJERO
+- La ruta vive en la cuenta del mensajero; WhatsApp es aviso/acceso secundario.
+- Entrega de ruta inicia contador de salida.
+- 5 min: advertencia. 10 min: salida tardía y causa/responsable.
+- Antes de AM y PM: foto tacómetro/odómetro inicial + lectura km.
+- Ruta secuencial parada por parada.
+- Llegué inicia espera; alertas 5/10/15.
+- Cliente atendiendo cambia a tiempo de servicio, que puede superar 15 min sin considerarse espera improductiva.
+- Entregado/no entregado/incidencia exige datos/evidencias correspondientes.
+- Retorno CEDI + foto y lectura final AM/PM.
+
+NO ENTREGADOS / REINTENTOS
+- No todo no-entregado vuelve inmediatamente a No asignados.
+- Cliente ausente/cerrado puede reprogramarse.
+- Error que debe corregirse pasa a Pendiente de corrección.
+- Máximo 3 intentos; tercer intento no efectivo: Anulado, salvo reapertura autorizada.
+- Conservar causa, responsable, evidencia y costo del reproceso.
+
+CLIENTES / VISITAS
+- Contar visitas por SO y cliente, AM/PM, día, semana, mes.
+- Registrar cambios de dirección y su origen.
+- Registrar espera, atención, cobro, devolución y recolección para aprender comportamiento del cliente.
+
+DEVOLUCIONES / VENTAS
+- Guardar motivo, evidencia y responsable de origen.
+- Separar errores de Ventas, Bodega, Logística, Mensajero, Créditos, Cliente, Sistema y Externo.
+- Vendedor debe poder consultar estado, pero no modificar ruta.
+- Reporte de calidad vendedor debe mostrar errores atribuibles, reintentos, devoluciones y cambios de dirección.
+
+CRÉDITOS
+- Plazo de pago != estado real de pago.
+- Créditos/Gerencia validan estado, medio, referencia e instrucción al mensajero.
+- Mensajero ve una acción clara: cobrar/no cobrar/POS/cheque/solo entregar.
+
+BITÁCORA / KPI / KM
+- Bitácora Mensajero y Liquidación son documentos diferentes.
+- Bitácora conserva AM/PM, salida, alertas, tacómetros, paradas, espera, atención, incidencias, retorno y KM.
+- KPI debe distinguir causas atribuibles/no atribuibles.
+- KM planificados vs reales vs validados pagables.
+- Cierre AM vs inicio PM permite detectar KM sin ruta.
+- Combustible/depreciación se basarán en KM validados; depreciación actual Q0.37/km.
+
+INVENTARIO
+- Inventarios es módulo principal.
+- Producto, ubicación, existencia, desde/a, origen y frecuencia de movimientos.
+- Analizar centralización Z4/USAC → Z16 y costos evitables.
+
+DASHBOARD
+- Analiza, no es la fuente de almacenamiento.
+- Debe permitir bajar de KPI → detalle → SO → historial/evidencia.
+- Eficiencia por cortes reales, no Ruta 1-4 fija.
+- Debe analizar primer intento, reintentos, anulados, causas, vendedores, mensajeros, clientes, KM, costos, devoluciones, inventario y aprendizaje.
+
+MÓDULOS PRINCIPALES (12)
+1 Dashboard
+2 Planificador de Rutas
+3 Pedidos y Despachos
+4 Clientes Odoo
+5 Mensajeros
+6 Créditos y Cobros
+7 Consulta Vendedores
+8 Inventarios
+9 Flotilla
+10 Solicitud de Vehículo
+11 Combustibles y Costos
+12 Configuración
+
+PILOTO INTERNET
+- Una sola plataforma/estado central.
+- Usuarios desde redes diferentes.
+- Mensajeros pueden usar datos móviles.
+- Cloudflare Quick Tunnel para presentación/piloto; no producción.
+- Google Maps Demo Key para pruebas; clave estándar restringida en producción.

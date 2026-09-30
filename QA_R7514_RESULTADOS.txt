@@ -1,0 +1,46 @@
+QA LOGISTICA IMFOHSA R7.5.14
+Documento aplicado: Instrucciones_Planificador_Rutas_IMFOHSA(1).docx
+Fecha: 20/08/2026
+
+[OK] 50 pedidos cargados — 50
+[OK] Pedidos sin asignar — 0 asignados
+[OK] Puntos geográficos cargados — 50/50
+[OK] Regla monto mínimo Q200 — 5 pedidos manuales
+[OK] Tiempo estándar en cliente — 15 min
+[OK] Puntos sin asignar visibles sin ruta
+[OK] Rutas solo después de asignación
+[OK] Análisis continuo sin asignar
+[OK] Propuesta y confirmación separadas
+[OK] Escaneo/foto con verificación
+[OK] Traslado y consignación reconocidos
+[OK] Monto < Q200 queda manual
+[OK] Google Maps TrafficLayer
+[OK] Google Maps selector
+[OK] Google API Key en Configuración
+[OK] Firma obligatoria
+[OK] Firma integrada en evidencia
+[OK] Botón Regreso CEDI sustituido por ETA
+[OK] Secuencia de paradas bloqueada
+[OK] Temporizador espera por segundo
+[OK] Consulta vendedor por SO/nombre
+[OK] Ruta libre conservada
+[OK] Servidor local /api/health — {'ok': True, 'version': 2}
+[OK] Login Jefe de Logística — jefe_logistica
+[OK] Estado servido — 50 pedidos / 0 asignados
+[OK] Generador link Panel administrativo — /index.html
+[OK] Generador link Solicitud vehículo — /index.html?request=panel&token=acbaada975e4e4673409ac2cff0ec2770815119e441b760d
+[OK] Generador link Carga cliente — /index.html?clientUpload=1&token=addb1bb2b0a6fab700904f68e437a6b5a695ebe481d715ca
+[OK] Generador link Consulta vendedores — /index.html?seller=1&token=268ec215192662312eddbb7f2a7c07fef1e468fe93d94c5f
+[OK] Generador link mensajero — /index.html?driver=m_daniel&token=c09cab750133d510551dd87a57262ef7ee1218e8de6145ae&date=2026-08-20
+[OK] Consulta vendedor encuentra cliente — Cliente QA 001 Zona 1
+[OK] Validación endpoint tráfico — HTTP 400
+[OK] Google Routes TRAFFIC_AWARE
+[OK] Optimización de waypoints
+[OK] Respuesta google-live
+[OK] Cierre no permite pendientes
+[OK] Odómetro inicial obligatorio
+[OK] Odómetro final obligatorio
+[PENDIENTE] Google Maps tráfico real — Requiere API Key propia con Maps JavaScript API + Routes API y conexión a Internet.
+[PENDIENTE] HTTPS público externo — El contenedor no tiene salida DNS/Internet; generadores/tokens locales sí se probaron. En Windows ejecutar VERIFICAR_HTTPS.bat.
+
+Resumen: 38 OK · 0 FAIL · 2 pendientes externos

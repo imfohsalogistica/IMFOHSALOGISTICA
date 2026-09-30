@@ -1,0 +1,23 @@
+LOGÍSTICA IMFOHSA — R7.5.19 + MOTOR PLANIFICADOR R8
+
+CAMBIO PRINCIPAL
+El Planificador ahora analiza calles/capacidad antes de decidir mensajero. Mantiene la interfaz existente y reemplaza la decisión inteligente por el Motor R8.
+
+NUEVO
+- Matriz vial antes de asignar.
+- Soporte por bloques para 100+ pedidos.
+- Cortes y horarios desde Configuración.
+- Regla Q200 configurable/activable.
+- Restricción dura de retorno.
+- Restricción dura de citas/ventanas del cliente.
+- Aprendizaje real de tiempos por cliente, desviaciones ETA y correcciones manuales.
+- Google -> OSRM -> respaldo geográfico.
+- Propuesta sin asignar hasta confirmación.
+- Reoptimización por calles respetando cortes.
+
+CONFIGURACIÓN
+Ingrese a Configuración > Motor Planificador R8 para modificar los parámetros sin tocar código.
+
+ARCHIVOS DE CONTROL
+- SKILL_PLANIFICADOR_RUTAS_IMFOHSA_R8.md
+- QA_PLANIFICADOR_R8_RESULTADOS.txt

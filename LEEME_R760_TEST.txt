@@ -1,0 +1,61 @@
+LOGÍSTICA IMFOHSA · R7.6.0 TEST
+Planificador R8.1 + aprendizaje + origen/inventario
+
+INICIO EN WINDOWS
+1. Descomprima todo el ZIP en una carpeta normal de Windows.
+2. Ejecute INICIAR_IMFOHSA.bat.
+3. El navegador abrirá http://localhost:8815/index.html?v=760
+4. Mantenga la ventana negra del servidor abierta durante la prueba.
+
+USUARIOS DE PRUEBA
+- WFUENTES  / Imfohsa1234/   (Jefe de Logística)
+- JLEMUS    / Imfohsa1234/   (Gerente de Operaciones)
+- NLIMA     / Imfohsa1234/   (Asistente Zona 16)
+- GOLIVA    / Imfohsa1234/   (Coordinador Zona 4)
+- VENTAS1   / Imfohsa1234/
+- COBROS1   / Imfohsa1234/
+
+ESCENARIO REAL CARGADO
+- Fecha operativa de prueba: 23/08/2026.
+- 78 SO reales estructuradas, todas inicialmente en NO ASIGNADAS.
+- 112 imágenes reales únicas preservadas en la bandeja “Listas reales”.
+- 32 líneas de inventario estructuradas.
+- 10 mensajeros: 8 Ruta + 1 Panel + 1 Institucional, con roles rotativos.
+- 2 pedidos Express de prueba con SLA de 2 horas.
+
+PRUEBAS RECOMENDADAS
+A. PLANIFICADOR
+- Seleccione Corte operativo 08:00 / 09:30 / 12:30 / 14:00.
+- Use “Mostrar rutas” para ver Todas, No asignadas, Solo asignadas o un mensajero.
+- Ejecute “Analizar corte y proponer rutas”. Revise antes de confirmar.
+- Después de confirmar, arrastre una parada dentro de una ruta y muévala a una posición exacta.
+- Actualice la página y confirme que el orden permanezca.
+- Use “Optimizar esta ruta” y confirme que se guarde el nuevo orden.
+
+B. TURNOS Y DISPONIBILIDAD
+- Abra “Turnos y disponibilidad”.
+- Debe permitir 8 Ruta, 1 Panel, 1 Institucional.
+- Deben existir 4 Ruta en Grupo A y 4 Ruta en Grupo B.
+- Los grupos rotan horario semanalmente entre 08:00 y 09:00.
+- Marque un mensajero Ausente y confirme que no sea elegible para una nueva propuesta.
+
+C. EXPRESS
+- Abra “Express 2h”.
+- Marque una SO y compruebe hora de liberación + límite de 120 minutos.
+- La propuesta debe priorizar el SLA sin romper ventanas obligatorias.
+
+D. LISTAS / INVENTARIO
+- En Pedidos y Despachos revise “Origen e inventario”.
+- Abra “Listas reales” para navegar las 112 imágenes fuente.
+- Verifique BZ4, B-REP, BUSAC, CDZ16 y líneas Producto/Ubicación/Cantidad/Existencia/Desde/A.
+
+E. WHATSAPP
+- En una ruta asignada seleccione Compartir por WhatsApp.
+- En la misma Wi-Fi debe generarse enlace LAN inmediatamente.
+- Para uso fuera de red, el HTTPS público depende de la conexión real del servidor/túnel.
+
+IMPORTANTE SOBRE LOS DATOS DE PRUEBA
+- Las coordenadas de las 78 SO son aproximadas para hacer visibles todos los pedidos en el mapa. No se presentan como geocodificación real validada.
+- Antes de una operación real debe validarse el punto exacto de cada dirección.
+- Las 112 imágenes son fuente documental real. 78 SO fueron estructuradas con suficiente confianza; las restantes se preservan para validación/aprendizaje en vez de inventar datos.
+- Los costos de movimientos entre bodegas son simulaciones hasta capturar KM reales de esos viajes.

@@ -1,0 +1,15 @@
+LOGISTICA IMFOHSA R7.7.5 PILOTO - ARRANQUE CORREGIDO
+====================================================
+
+1. Descomprima TODO el ZIP en una carpeta normal de Windows. No ejecute desde dentro del ZIP.
+2. Haga doble clic en INICIAR_PILOTO_INTERNET.
+3. La ventana negra debe permanecer abierta durante todo el piloto.
+4. El arranque intenta quitar solamente el bloqueo de archivo descargado (Mark of the Web). NO desactiva Windows Defender ni modifica el antivirus.
+5. Si el servidor no inicia, la ventana YA NO se cerrara: mostrara la causa y creara DIAGNOSTICO_ARRANQUE.txt.
+6. Si aparece "PILOTO LISTO", use el enlace de ENLACE_PILOTO_PUBLICO.txt.
+7. Si falla, ejecute DIAGNOSTICAR_ARRANQUE y comparta una captura o el contenido de DIAGNOSTICO_ARRANQUE.txt.
+
+IMPORTANTE:
+- Mantenga la PC servidor encendida.
+- Mantenga la ventana negra abierta.
+- El enlace trycloudflare.com puede cambiar en cada reinicio.

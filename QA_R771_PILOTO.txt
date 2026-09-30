@@ -1,0 +1,50 @@
+LOGÍSTICA IMFOHSA — QA R7.7.1 PILOTO
+Fecha: 23/08/2026
+
+RESULTADOS VERIFICADOS
+[OK] Binario servidor Linux recompilado.
+[OK] Binario servidor Windows recompilado.
+[OK] Sintaxis JavaScript del index.html validada con node --check.
+[OK] /api/health responde correctamente.
+[OK] Login WFUENTES / Jefe de Logística.
+[OK] Login DCHOC / Daniel Choc con rol mensajero.
+[OK] Login ECIVIL / Edwin Civil con rol mensajero.
+[OK] DCHOC queda vinculado únicamente a m_daniel.
+[OK] ECIVIL queda vinculado únicamente a m_edwin.
+[OK] Sesión DCHOC accede a su propia vista de ruta móvil.
+[OK] Sesión DCHOC recibe HTTP 403 al intentar abrir la ruta de Edwin.
+[OK] Mensajeros entran desde el mismo enlace público y son redirigidos a su ruta móvil.
+[OK] Gestión de usuarios conserva rol Mensajero y vínculo con perfil de mensajero.
+[OK] Estado de prueba conserva 78 SO estructuradas.
+[OK] Conserva 112 imágenes de listas reales.
+[OK] Conserva 32 líneas de inventario estructuradas.
+[OK] Conserva 10 mensajeros.
+[OK] Las 78 SO quedan sin asignar para iniciar las pruebas.
+[OK] Dashboard Ejecutivo 2.0 presente.
+[OK] Inventarios presente como módulo principal.
+[OK] Flujo móvil distingue Esperando vs Atendiendo al cliente.
+[OK] Control de salida 5/10 min preparado.
+[OK] Tacómetro/odómetro inicial y final por AM/PM preparado.
+[OK] Bitácora del mensajero separada de Liquidación.
+[OK] Reintentos con máximo de 3 intentos y anulación automática preparados.
+[OK] Historial de valor manual, cambios de dirección e intentos preparado.
+[OK] Google Maps Demo Key configurable desde Configuración.
+[OK] Geocodificación Google-first con respaldo Nominatim.
+[OK] Routes/tráfico Google con respaldo OSRM conserva la lógica previa.
+[OK] Quick Tunnel de Cloudflare preparado para acceso desde redes distintas.
+
+CORRECCIONES TÉCNICAS R7.7.1
+- Se agregaron credenciales propias para Daniel Choc y Edwin Civil.
+- El usuario mensajero autenticado no expone el token de ruta en la URL.
+- El servidor valida que el mensajero autenticado solo acceda a su messengerId vinculado.
+- La pantalla de usuarios permite conservar/editar rol Mensajero y su vínculo.
+- Administración y mensajeros utilizan el mismo enlace HTTPS público del piloto.
+
+LIMITACIONES QUE DEBEN VALIDARSE EN LA PC/TELÉFONOS DEL PILOTO
+- El túnel HTTPS real de Cloudflare debe abrirse con INICIAR_PILOTO_INTERNET.bat en la PC Windows con Internet.
+- La Google Maps Demo Key del usuario no se incluyó ni se probó aquí. Debe pegarse en Configuración > Google Maps · Piloto.
+- Las coordenadas aproximadas heredadas de R7.6 son QA; las direcciones deben ir validándose con Google durante el piloto.
+- Quick Tunnel es para piloto/demostración; la URL puede cambiar al reiniciar y no sustituye hosting empresarial de producción.
+
+ESTADO
+APTO PARA PILOTO CONTROLADO Y PRESENTACIÓN. No se declara producción empresarial certificada hasta completar pruebas reales de Internet, teléfonos, GPS/cámara, Google Maps, concurrencia y continuidad operativa.

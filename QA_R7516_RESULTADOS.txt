@@ -1,0 +1,27 @@
+LOGÍSTICA IMFOHSA R7.5.16 — RESULTADOS DE VALIDACIÓN
+
+CORRECCIONES SOLICITADAS
+[OK] NLIMA puede iniciar sesión como asistente_z16.
+[OK] GOLIVA puede iniciar sesión como coordinador_z4.
+[OK] NLIMA y GOLIVA reciben los datos necesarios para visualizar el Dashboard completo: pedidos, mensajeros, vehículos, combustible, solicitudes, costos manuales y viajes de panel.
+[OK] NLIMA puede visualizar Zona 16 y Zona 4; el servidor solo acepta cambios de Zona 16.
+[OK] GOLIVA puede visualizar Zona 16 y Zona 4; el servidor solo acepta cambios de Zona 4.
+[OK] En la primera entrada del usuario operativo, NLIMA abre CEDI Zona 16 y GOLIVA abre Laboratorio Zona 4.
+[OK] En el centro autorizado se habilitan Escanear/tomar foto, Asignación inteligente, Ruta libre y Parada manual.
+[OK] Al cambiar al centro contrario, esos controles quedan en modo solo visualización.
+[OK] Los nuevos pedidos generados por GOLIVA desde su centro se almacenan con centerId=lab4.
+[OK] Los nuevos pedidos generados por NLIMA desde su centro se almacenan con centerId=cedi16.
+[OK] El servidor descarta cualquier intento de crear/modificar pedidos en el centro no autorizado.
+[OK] Se mantienen 50 pedidos QA, sin asignar, preparados en Zona 16.
+[OK] Login validado para JLEMUS, WFUENTES, NLIMA, GOLIVA, VENTAS1 y COBROS1.
+[OK] JavaScript principal validado con node --check.
+[OK] Servidor recompilado para Windows y Linux.
+[OK] El servidor escucha en 0.0.0.0:8815 para permitir pruebas desde otra computadora en la misma red.
+
+PRUEBA DE RED LOCAL
+- localhost:8815 solo funciona en la computadora principal.
+- Ejecute MOSTRAR_ENLACE_RED_LOCAL.bat para ver la URL que sí puede abrir otra computadora conectada a la misma red.
+- Para cámara/GPS desde otro equipo o teléfono, utilizar HTTPS público.
+
+CLAVE TEMPORAL
+Imfohsa1234/

@@ -1,0 +1,41 @@
+LOGÍSTICA IMFOHSA R7.7.7 PILOTO — ACCESO EXTERNO CON NGROK
+================================================================
+
+POR QUÉ CAMBIAMOS
+Cloudflare Quick Tunnel no mantuvo una conexión saludable desde la red de prueba.
+Para no arriesgar la presentación, R7.7.7 usa ngrok como túnel externo principal.
+
+CONFIGURACIÓN UNA SOLA VEZ
+1. Descomprima el ZIP completo en una carpeta nueva.
+2. Ejecute CONFIGURAR_NGROK.bat.
+3. Si ngrok no está instalado, el asistente intentará instalarlo o abrirá la página oficial.
+4. Cree/inicie una cuenta gratuita de ngrok.
+5. Copie el AUTHTOKEN de su cuenta y péguelo únicamente cuando CONFIGURAR_NGROK lo solicite.
+6. El token se guarda en la configuración de ngrok, no dentro de la plataforma IMFOHSA.
+
+CADA VEZ QUE HARÁ PRUEBAS
+1. Ejecute INICIAR_PILOTO_INTERNET.bat.
+2. Espere hasta ver: PILOTO EXTERNO LISTO.
+3. Se creará ENLACE_PILOTO_PUBLICO.txt y ENLACES_PILOTO_PARA_COMPARTIR.txt.
+4. Comparta ese MISMO enlace con todos los usuarios.
+5. Pruebe en un teléfono con Wi-Fi apagado y datos móviles encendidos.
+6. Mantenga abierta la ventana del piloto durante toda la prueba.
+
+USUARIOS
+JLEMUS   Gerencia
+WFUENTES Jefe de Logística
+NLIMA    Asistente Zona 16
+GOLIVA   Coordinador Zona 4
+VENTAS1  Ventas
+COBROS1  Créditos y Cobros
+DCHOC    Daniel Choc
+ECIVIL   Edwin Civil
+
+Contraseña temporal: Imfohsa1234/
+
+NOTA NGROK GRATUITO
+La primera vez que un navegador abre el dominio gratuito de ngrok puede aparecer una página
+informativa de seguridad de ngrok. El usuario debe presionar "Visit Site" una vez; la decisión
+queda recordada para ese dominio durante varios días.
+
+NO publique su AUTHTOKEN ni lo envíe por WhatsApp, correo o chat.

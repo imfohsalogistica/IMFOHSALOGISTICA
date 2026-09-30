@@ -1,0 +1,42 @@
+LOGÍSTICA IMFOHSA R7.5.17 — QA INTERNO
+
+Pruebas: 35  OK: 35  Fallos: 0
+
+[OK] Login JLEMUS — gerente_operaciones
+[OK] Login WFUENTES — jefe_logistica
+[OK] Login NLIMA — asistente_z16
+[OK] Login GOLIVA — coordinador_z4
+[OK] Login VENTAS1 — ventas
+[OK] Login COBROS1 — creditos_cobros
+[OK] 50 pedidos cargados — 50
+[OK] 50 pedidos sin asignar — 50
+[OK] 50 pedidos con coordenadas
+[OK] LAN sin localhost ni espacios — http://172.26.36.19:8815
+[OK] Token móvil de ruta — lan
+[OK] Ruta móvil abre por LAN — Daniel Choc
+[OK] Disponibilidad se guarda
+[OK] GOLIVA visualiza Z16
+[OK] GOLIVA no modifica Z16 — Cliente QA 001 Zona 1
+[OK] GOLIVA crea/modifica Z4
+[OK] NLIMA visualiza Z4
+[OK] NLIMA no modifica Z4
+[OK] NLIMA modifica Z16 — QA_Z16_PERMITIDO
+[OK] Persistencia tras reiniciar: disponibilidad
+[OK] Persistencia tras reiniciar: Z16 permitido
+[OK] Persistencia tras reiniciar: Z4 creado
+[OK] Orden de 11 módulos — [172, 200, 239, 277, 312, 345, 381, 417, 450, 487, 528]
+[OK] Arrastre visible
+[OK] Mapa pin movible
+[OK] Dirección/pin
+[OK] Parada manual ubicación
+[OK] Clientes múltiples direcciones
+[OK] Alerta activos/ausentes
+[OK] KM restantes
+[OK] Enlace LAN
+[OK] Enlace HTTPS
+[OK] WhatsApp externo validado
+[OK] Estado final limpio: 50 pedidos
+[OK] Estado final limpio: 0 asignados
+
+NOTA SOBRE HTTPS EXTERNO:
+La lógica de generación/verificación y bloqueo de WhatsApp se validó estáticamente. El túnel público real no puede comprobarse en este contenedor Linux porque la versión de pruebas incluye cloudflared para Windows. En la PC de pruebas use VERIFICAR_ENLACES_MOVIL_R7517.bat; solo habilite WhatsApp externo cuando el HTTPS responda.

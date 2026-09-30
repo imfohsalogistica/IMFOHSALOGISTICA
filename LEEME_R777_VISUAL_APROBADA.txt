@@ -1,0 +1,21 @@
+LOGÍSTICA IMFOHSA — R7.7.7 VISUAL
+Actualización local: 25/08/2026
+
+Esta carpeta conserva la base funcional R7.7.7 y agrega una capa visual alineada
+con las referencias aprobadas de:
+- Panel de módulos
+- Vista móvil del mensajero
+- Dashboard
+- Casilla física visible en pedidos y vista móvil
+
+IMPORTANTE:
+1) Esta versión sirve para pruebas locales y revisión visual.
+2) La lógica original de R7.7.7 se conserva; no se sustituyó por una maqueta.
+3) El número de casilla se muestra mediante el campo physicalBin cuando existe.
+4) La integración empresarial Supabase + Vercel continúa como línea paralela.
+5) Las imágenes de referencia permanecen en PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/REFERENCIAS_VISUALES.
+
+Para iniciar:
+- Ejecutar INICIAR_IMFOHSA.bat
+- Abrir la dirección que muestre el servidor
+- Probar Dashboard, Planificador, Pedidos, Mensajeros y Vista móvil.
