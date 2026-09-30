@@ -3,11 +3,15 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"context"
 	"crypto/rand"
 	"crypto/sha256"
+	"database/sql"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
+	_ "github.com/lib/pq"
 	"html"
 	"image"
 	_ "image/jpeg"
@@ -33,6 +37,9 @@ import (
 var port = 8815
 
 type Server struct {
+	db               *sql.DB
+	committedState   []byte
+	dbVersion        int64
 	mu               sync.RWMutex
 	state            map[string]interface{}
 	version          int64
@@ -72,7 +79,9 @@ type CaptureSession struct {
 func main() {
 	if value := os.Getenv("PORT"); value != "" {
 		parsed, err := strconv.Atoi(value)
-		if err != nil || parsed < 1 || parsed > 65535 { log.Fatal("PORT inválido") }
+		if err != nil || parsed < 1 || parsed > 65535 {
+			log.Fatal("PORT inválido")
+		}
 		port = parsed
 	}
 	exe, _ := os.Executable()
@@ -84,6 +93,12 @@ func main() {
 	}
 	s := &Server{sessions: map[string]string{}, root: root, eventClients: map[chan int64]bool{}, captures: map[string]*CaptureSession{}}
 	s.publicURL = strings.TrimRight(os.Getenv("RENDER_EXTERNAL_URL"), "/")
+	if err := s.openDatabase(); err != nil {
+		log.Fatal(err)
+	}
+	if s.db != nil {
+		defer s.db.Close()
+	}
 	if err := s.loadState(); err != nil {
 		log.Fatal(err)
 	}
@@ -190,13 +205,31 @@ func (s *Server) adminsPath() string { return filepath.Join(s.root, "data", "adm
 func (s *Server) loadState() error {
 	os.MkdirAll(filepath.Join(s.root, "data"), 0755)
 	os.MkdirAll(filepath.Join(s.root, "uploads"), 0755)
-	b, err := os.ReadFile(s.statePath())
+	bootstrapAllowed := s.db == nil
+	if s.db != nil {
+		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+		err := s.db.QueryRowContext(ctx, `SELECT NOT EXISTS (SELECT 1 FROM imfohsa_private.documents WHERE key='admins')`).Scan(&bootstrapAllowed)
+		cancel()
+		if err != nil {
+			return errors.New("no se pudo verificar la inicialización de Supabase")
+		}
+	}
+	b, err := s.loadDocument("state", s.statePath())
+	if err != nil && !errors.Is(err, os.ErrNotExist) {
+		return err
+	}
 	if err != nil {
 		b, err = os.ReadFile(filepath.Join(s.root, "data", "default_state.json"))
 		if err != nil {
 			return fmt.Errorf("falta data/default_state.json")
 		}
-		os.WriteFile(s.statePath(), b, 0644)
+		if err := s.seedDocument("state", b); err != nil {
+			return err
+		}
+		b, err = s.loadDocument("state", s.statePath())
+		if err != nil {
+			return err
+		}
 	}
 	var x map[string]interface{}
 	if err := json.Unmarshal(b, &x); err != nil {
@@ -208,7 +241,7 @@ func (s *Server) loadState() error {
 	} else {
 		s.version = 1
 	}
-	if _, err := os.Stat(s.adminsPath()); err != nil {
+	if _, err := s.loadDocument("admins", s.adminsPath()); errors.Is(err, os.ErrNotExist) {
 		admins := []Admin{
 			{Username: "admin1", Name: "Gerencia General", PasswordHash: hash("Imfohsa#2026"), Active: true, Role: "gerente_general"},
 			{Username: "admin2", Name: "Jefe de Logística", PasswordHash: hash("Imfohsa#2026"), Active: true, Role: "jefe_logistica"},
@@ -216,19 +249,39 @@ func (s *Server) loadState() error {
 			{Username: "admin4", Name: "Ventas", PasswordHash: hash("Imfohsa#2026"), Active: true, Role: "ventas"},
 		}
 		bb, _ := json.MarshalIndent(admins, "", "  ")
-		os.WriteFile(s.adminsPath(), bb, 0600)
+		if err := s.seedDocument("admins", bb); err != nil {
+			return err
+		}
 	}
-	if password := os.Getenv("IMFOHSA_BOOTSTRAP_PASSWORD"); password != "" {
+	if password := os.Getenv("IMFOHSA_BOOTSTRAP_PASSWORD"); password != "" && bootstrapAllowed {
 		var admins []Admin
-		bb, err := os.ReadFile(s.adminsPath())
-		if err != nil { return err }
-		if err := json.Unmarshal(bb, &admins); err != nil { return err }
-		for i := range admins { admins[i].PasswordHash = hash(password) }
+		bb, err := s.readAdmins()
+		if err != nil {
+			return err
+		}
+		if err := json.Unmarshal(bb, &admins); err != nil {
+			return err
+		}
+		for i := range admins {
+			admins[i].PasswordHash = hash(password)
+		}
 		bb, err = json.MarshalIndent(admins, "", "  ")
-		if err != nil { return err }
-		if err := os.WriteFile(s.adminsPath(), bb, 0600); err != nil { return err }
+		if err != nil {
+			return err
+		}
+		if err := s.writeDocument("admins", bb); err != nil {
+			return errors.New("no se pudieron guardar los usuarios iniciales")
+		}
 	}
-	return nil
+	if s.version < 1 {
+		s.version = 1
+	}
+	s.committedState = append([]byte(nil), b...)
+	s.dbVersion = s.version
+	if _, err := s.loadDocument("admins", s.adminsPath()); err != nil {
+		return fmt.Errorf("no se pudieron cargar los usuarios")
+	}
+	return s.migrateUploads()
 }
 func hash(v string) string { h := sha256.Sum256([]byte(v)); return hex.EncodeToString(h[:]) }
 func token() string        { b := make([]byte, 24); rand.Read(b); return hex.EncodeToString(b) }
@@ -243,12 +296,51 @@ func sval(v interface{}) string {
 	return x
 }
 func (s *Server) saveLocked() error {
-	s.version++
-	s.state["version"] = s.version
-	b, _ := json.MarshalIndent(s.state, "", "  ")
-	if err := os.WriteFile(s.statePath(), b, 0644); err != nil {
-		return err
+	conflict := false
+	nextVersion := s.version + 1
+	s.state["version"] = nextVersion
+	b, err := json.MarshalIndent(s.state, "", "  ")
+	if err == nil {
+		if s.db == nil {
+			err = os.WriteFile(s.statePath(), b, 0644)
+		} else {
+			ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+			defer cancel()
+			var result sql.Result
+			result, err = s.db.ExecContext(ctx, `UPDATE imfohsa_private.documents SET payload=$1::jsonb, version=$2, updated_at=now() WHERE key='state' AND version=$3`, string(b), nextVersion, s.dbVersion)
+			if err == nil {
+				var n int64
+				n, err = result.RowsAffected()
+				if n != 1 && err == nil {
+					conflict = true
+					err = errors.New("conflicto de versión")
+				}
+			}
+		}
 	}
+	if err != nil {
+		// Never retain changes in memory after a failed durable write.
+		var previous map[string]interface{}
+		if json.Unmarshal(s.committedState, &previous) == nil {
+			s.state = previous
+		}
+		if conflict {
+			// A replacement Render instance may have committed a newer version.
+			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			defer cancel()
+			var latest []byte
+			var version int64
+			if s.db.QueryRowContext(ctx, `SELECT payload, version FROM imfohsa_private.documents WHERE key='state'`).Scan(&latest, &version) == nil && json.Unmarshal(latest, &previous) == nil {
+				s.state = previous
+				s.version = version
+				s.dbVersion = version
+				s.committedState = latest
+			}
+		}
+		return errors.New("No se pudo guardar. Vuelva a intentar; si persiste, revise la conexión a la base de datos")
+	}
+	s.version, s.dbVersion = nextVersion, nextVersion
+	s.committedState = append([]byte(nil), b...)
 	go s.broadcast()
 	return nil
 }
@@ -286,7 +378,7 @@ func (s *Server) authUser(r *http.Request) string {
 func normalizeRole(role string) string {
 	r := strings.ToLower(strings.TrimSpace(role))
 	switch r {
-	case "gerente_operaciones", "jefe_logistica", "asistente_z16", "coordinador_z4", "ventas", "creditos_cobros", "mensajero":
+	case "sin_acceso", "gerente_operaciones", "jefe_logistica", "asistente_z16", "coordinador_z4", "ventas", "creditos_cobros", "mensajero":
 		return r
 	case "gerente_general":
 		return "gerente_operaciones"
@@ -297,7 +389,10 @@ func normalizeRole(role string) string {
 	}
 }
 func (s *Server) roleForUser(username string) string {
-	b, _ := os.ReadFile(s.adminsPath())
+	b, err := s.readAdmins()
+	if err != nil {
+		return "sin_acceso"
+	}
 	var admins []Admin
 	_ = json.Unmarshal(b, &admins)
 	for _, a := range admins {
@@ -305,10 +400,10 @@ func (s *Server) roleForUser(username string) string {
 			return normalizeRole(a.Role)
 		}
 	}
-	return "jefe_logistica"
+	return "sin_acceso"
 }
 func (s *Server) messengerAccessForUser(username string) (string, string) {
-	b, _ := os.ReadFile(s.adminsPath())
+	b, _ := s.readAdmins()
 	var admins []Admin
 	_ = json.Unmarshal(b, &admins)
 	messengerID := ""
@@ -411,7 +506,20 @@ func (s *Server) health(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNoContent)
 		return
 	}
-	jsonOut(w, map[string]interface{}{"ok": true, "version": s.version})
+	storage := "local"
+	if s.db != nil {
+		storage = "postgresql"
+		ctx, cancel := context.WithTimeout(r.Context(), 5*time.Second)
+		defer cancel()
+		if err := s.db.PingContext(ctx); err != nil {
+			http.Error(w, "Base de datos no disponible", 503)
+			return
+		}
+	}
+	s.mu.RLock()
+	version := s.version
+	s.mu.RUnlock()
+	jsonOut(w, map[string]interface{}{"ok": true, "version": version, "storage": storage})
 }
 func (s *Server) verifyPublicLink(w http.ResponseWriter, r *http.Request) {
 	if _, ok := s.requireAdmin(w, r); !ok {
@@ -530,7 +638,11 @@ func (s *Server) sharePanelRequestInfo(w http.ResponseWriter, r *http.Request) {
 	if pt == "" || r.URL.Query().Get("reset") == "1" {
 		pt = token()
 		st["panelRequestPublicToken"] = pt
-		_ = s.saveLocked()
+		if err := s.saveLocked(); err != nil {
+			s.mu.Unlock()
+			http.Error(w, err.Error(), 503)
+			return
+		}
 	}
 	s.mu.Unlock()
 	base, mode := s.ensurePublicBase(40 * time.Second)
@@ -555,7 +667,11 @@ func (s *Server) shareClientUploadInfo(w http.ResponseWriter, r *http.Request) {
 	if t == "" || r.URL.Query().Get("reset") == "1" {
 		t = token()
 		st["clientUploadPublicToken"] = t
-		_ = s.saveLocked()
+		if err := s.saveLocked(); err != nil {
+			s.mu.Unlock()
+			http.Error(w, err.Error(), 503)
+			return
+		}
 	}
 	s.mu.Unlock()
 	base, mode := s.ensurePublicBase(40 * time.Second)
@@ -580,7 +696,11 @@ func (s *Server) shareSellerInfo(w http.ResponseWriter, r *http.Request) {
 	if t == "" || r.URL.Query().Get("reset") == "1" {
 		t = token()
 		st["sellerPublicToken"] = t
-		_ = s.saveLocked()
+		if err := s.saveLocked(); err != nil {
+			s.mu.Unlock()
+			http.Error(w, err.Error(), 503)
+			return
+		}
 	}
 	s.mu.Unlock()
 	base, mode := s.ensurePublicBase(40 * time.Second)
@@ -706,7 +826,11 @@ func (s *Server) shareDriverInfo(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if found {
-		_ = s.saveLocked()
+		if err := s.saveLocked(); err != nil {
+			s.mu.Unlock()
+			http.Error(w, err.Error(), 503)
+			return
+		}
 	}
 	s.mu.Unlock()
 	if !found {
@@ -802,7 +926,10 @@ func (s *Server) validateDriverAccess(w http.ResponseWriter, r *http.Request, dr
 		}
 		m["routeAccessDevice"] = hash(device)
 		m["routeAccessClaimedAt"] = time.Now().Format(time.RFC3339)
-		_ = s.saveLocked()
+		if err := s.saveLocked(); err != nil {
+			http.Error(w, err.Error(), 503)
+			return false
+		}
 		return true
 	}
 	return false
@@ -875,7 +1002,11 @@ func (s *Server) shareRoutePage(w http.ResponseWriter, r *http.Request) {
 				m["routeAssignedDate"] = date
 				m["routeStatus"] = "Pendiente"
 			}
-			_ = s.saveLocked()
+			if err := s.saveLocked(); err != nil {
+				s.mu.Unlock()
+				http.Error(w, err.Error(), 503)
+				return
+			}
 			break
 		}
 	}
@@ -915,7 +1046,11 @@ func (s *Server) sharePanelRequestPage(w http.ResponseWriter, r *http.Request) {
 	if pt == "" {
 		pt = token()
 		st["panelRequestPublicToken"] = pt
-		_ = s.saveLocked()
+		if err := s.saveLocked(); err != nil {
+			s.mu.Unlock()
+			http.Error(w, err.Error(), 503)
+			return
+		}
 	}
 	s.mu.Unlock()
 	base, mode := s.ensurePublicBase(40 * time.Second)
@@ -1070,13 +1205,15 @@ func (s *Server) captureUpload(w http.ResponseWriter, r *http.Request) {
 		ext = ".jpg"
 	}
 	name := fmt.Sprintf("%d_%s%s", time.Now().UnixNano(), token()[:8], ext)
-	out, err := os.Create(filepath.Join(s.root, "uploads", name))
-	if err != nil {
-		http.Error(w, "save", 500)
+	content, err := io.ReadAll(io.LimitReader(f, (12<<20)+1))
+	if err != nil || len(content) > 12<<20 {
+		http.Error(w, "archivo inválido o mayor a 12MB", 400)
 		return
 	}
-	io.Copy(out, io.LimitReader(f, 12<<20))
-	out.Close()
+	if err := s.writeUpload(name, content); err != nil {
+		http.Error(w, "No se pudo guardar la fotografía", 503)
+		return
+	}
 	u := "/uploads/" + name
 	s.mu.Lock()
 	if c := s.captures[id]; c != nil && len(c.URLs) < c.Max {
@@ -1133,7 +1270,7 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 	}
 	q.Username = strings.TrimSpace(q.Username)
 	q.Password = strings.TrimSpace(q.Password)
-	b, _ := os.ReadFile(s.adminsPath())
+	b, _ := s.readAdmins()
 	var admins []Admin
 	json.Unmarshal(b, &admins)
 	ok := false
@@ -1190,7 +1327,7 @@ func (s *Server) me(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "No autorizado", 401)
 		return
 	}
-	b, _ := os.ReadFile(s.adminsPath())
+	b, _ := s.readAdmins()
 	var admins []Admin
 	json.Unmarshal(b, &admins)
 	name := u
@@ -1555,7 +1692,11 @@ func (s *Server) adminsHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Method == "GET" {
-		b, _ := os.ReadFile(s.adminsPath())
+		b, err := s.readAdmins()
+		if err != nil {
+			http.Error(w, "No se pudieron cargar los usuarios", 503)
+			return
+		}
 		var admins []Admin
 		json.Unmarshal(b, &admins)
 		out := []map[string]interface{}{}
@@ -1575,6 +1716,16 @@ func (s *Server) adminsHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		admins := []Admin{}
+		oldData, err := s.readAdmins()
+		if err != nil {
+			http.Error(w, "No se pudieron cargar los usuarios", 503)
+			return
+		}
+		var old []Admin
+		if err := json.Unmarshal(oldData, &old); err != nil {
+			http.Error(w, "Datos de usuarios inválidos", 503)
+			return
+		}
 		for _, a := range q {
 			if strings.TrimSpace(a.Username) == "" {
 				continue
@@ -1582,9 +1733,6 @@ func (s *Server) adminsHandler(w http.ResponseWriter, r *http.Request) {
 			ph := ""
 			oldRole := ""
 			oldMessengerID := ""
-			b, _ := os.ReadFile(s.adminsPath())
-			var old []Admin
-			json.Unmarshal(b, &old)
 			for _, o := range old {
 				if o.Username == a.Username {
 					ph = o.PasswordHash
@@ -1619,7 +1767,10 @@ func (s *Server) adminsHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		bb, _ := json.MarshalIndent(admins, "", "  ")
-		os.WriteFile(s.adminsPath(), bb, 0600)
+		if err := s.writeDocument("admins", bb); err != nil {
+			http.Error(w, "No se pudieron guardar los usuarios", 503)
+			return
+		}
 		jsonOut(w, map[string]bool{"ok": true})
 		return
 	}
@@ -1643,7 +1794,21 @@ func (s *Server) static(w http.ResponseWriter, r *http.Request) {
 	http.NotFound(w, r)
 }
 func (s *Server) uploadsServe(w http.ResponseWriter, r *http.Request) {
-	http.StripPrefix("/uploads/", http.FileServer(http.Dir(filepath.Join(s.root, "uploads")))).ServeHTTP(w, r)
+	name := strings.TrimPrefix(r.URL.Path, "/uploads/")
+	if name == "" || name != filepath.Base(name) {
+		http.NotFound(w, r)
+		return
+	}
+	content, err := s.readUpload(name)
+	if errors.Is(err, os.ErrNotExist) {
+		http.NotFound(w, r)
+		return
+	}
+	if err != nil {
+		http.Error(w, "No se pudo cargar la fotografía", 503)
+		return
+	}
+	http.ServeContent(w, r, name, time.Time{}, bytes.NewReader(content))
 }
 
 func (s *Server) upload(w http.ResponseWriter, r *http.Request) {
@@ -1689,13 +1854,15 @@ func (s *Server) upload(w http.ResponseWriter, r *http.Request) {
 		ext = ".jpg"
 	}
 	name := fmt.Sprintf("%d_%s%s", time.Now().UnixNano(), token()[:8], ext)
-	out, err := os.Create(filepath.Join(s.root, "uploads", name))
-	if err != nil {
-		http.Error(w, "save", 500)
+	content, err := io.ReadAll(io.LimitReader(f, (12<<20)+1))
+	if err != nil || len(content) > 12<<20 {
+		http.Error(w, "archivo inválido o mayor a 12MB", 400)
 		return
 	}
-	defer out.Close()
-	io.Copy(out, io.LimitReader(f, 12<<20))
+	if err := s.writeUpload(name, content); err != nil {
+		http.Error(w, "No se pudo guardar la fotografía", 503)
+		return
+	}
 	jsonOut(w, map[string]interface{}{"ok": true, "url": "/uploads/" + name})
 }
 
@@ -2448,7 +2615,10 @@ func (s *Server) publicDriverAction(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	s.saveLocked()
+	if err := s.saveLocked(); err != nil {
+		http.Error(w, err.Error(), 503)
+		return
+	}
 	jsonOut(w, map[string]interface{}{"ok": true, "version": s.version})
 }
 
@@ -2550,7 +2720,10 @@ func (s *Server) publicPanelAction(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
-	s.saveLocked()
+	if err := s.saveLocked(); err != nil {
+		http.Error(w, err.Error(), 503)
+		return
+	}
 	jsonOut(w, map[string]bool{"ok": true})
 }
 func (s *Server) compareVehiclePhotos(startV, endV interface{}) map[string]interface{} {
@@ -2593,12 +2766,11 @@ func (s *Server) compareVehiclePhotos(startV, endV interface{}) map[string]inter
 }
 func (s *Server) avgImage(u string) (float64, float64, float64, bool) {
 	name := filepath.Base(strings.TrimPrefix(u, "/uploads/"))
-	f, err := os.Open(filepath.Join(s.root, "uploads", name))
+	content, err := s.readUpload(name)
 	if err != nil {
 		return 0, 0, 0, false
 	}
-	defer f.Close()
-	img, _, err := image.Decode(f)
+	img, _, err := image.Decode(bytes.NewReader(content))
 	if err != nil {
 		return 0, 0, 0, false
 	}
@@ -2706,7 +2878,11 @@ func (s *Server) panelRequest(w http.ResponseWriter, r *http.Request) {
 	s.mu.Lock()
 	arr, _ := s.state["panelRequests"].([]interface{})
 	s.state["panelRequests"] = append(arr, q)
-	s.saveLocked()
+	if err := s.saveLocked(); err != nil {
+		s.mu.Unlock()
+		http.Error(w, err.Error(), 503)
+		return
+	}
 	s.mu.Unlock()
 	jsonOut(w, map[string]interface{}{"ok": true, "id": q["id"]})
 }
@@ -3051,3 +3227,160 @@ func openBrowser(url string) {
 }
 
 var _ multipart.File
+
+// Supabase is authoritative when DATABASE_URL is configured. Local mode is
+// retained for the existing Windows pilot; connection failures never fall back.
+func (s *Server) openDatabase() error {
+	dsn := strings.TrimSpace(os.Getenv("DATABASE_URL"))
+	if dsn == "" {
+		if os.Getenv("DATABASE_REQUIRED") == "1" {
+			return errors.New("configure DATABASE_URL en las variables privadas del servidor")
+		}
+		return nil
+	}
+	u, err := url.Parse(dsn)
+	if err != nil || (u.Scheme != "postgresql" && u.Scheme != "postgres") || u.Hostname() == "" || strings.Contains(dsn, "[YOUR-PASSWORD]") {
+		return errors.New("DATABASE_URL inválida; configure la contraseña en Render")
+	}
+	q := u.Query()
+	if q.Get("sslmode") == "" {
+		q.Set("sslmode", "require")
+	}
+	if q.Get("connect_timeout") == "" {
+		q.Set("connect_timeout", "10")
+	}
+	if q.Get("sslmode") == "disable" && u.Hostname() != "localhost" && u.Hostname() != "127.0.0.1" {
+		return errors.New("la conexión remota requiere SSL")
+	}
+	u.RawQuery = q.Encode()
+	db, err := sql.Open("postgres", u.String())
+	if err != nil {
+		return errors.New("no se pudo configurar PostgreSQL")
+	}
+	db.SetMaxOpenConns(4)
+	db.SetMaxIdleConns(2)
+	db.SetConnMaxLifetime(20 * time.Minute)
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	if err = db.PingContext(ctx); err != nil {
+		db.Close()
+		return errors.New("no se pudo conectar a Supabase; revise DATABASE_URL, contraseña y disponibilidad")
+	}
+	s.db = db
+	log.Print("Almacenamiento PostgreSQL conectado")
+	return nil
+}
+func (s *Server) loadDocument(key, localPath string) ([]byte, error) {
+	if s.db == nil {
+		return os.ReadFile(localPath)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	var b []byte
+	err := s.db.QueryRowContext(ctx, `SELECT payload FROM imfohsa_private.documents WHERE key=$1`, key).Scan(&b)
+	if errors.Is(err, sql.ErrNoRows) {
+		local, readErr := os.ReadFile(localPath)
+		if readErr != nil {
+			return nil, readErr
+		}
+		if err := s.seedDocument(key, local); err != nil {
+			return nil, err
+		}
+		err = s.db.QueryRowContext(ctx, `SELECT payload FROM imfohsa_private.documents WHERE key=$1`, key).Scan(&b)
+	}
+	if err != nil {
+		return nil, errors.New("no se pudo leer el documento de Supabase")
+	}
+	return b, nil
+}
+func documentVersion(key string, b []byte) int64 {
+	if key != "state" {
+		return 1
+	}
+	var doc struct {
+		Version int64 `json:"version"`
+	}
+	if json.Unmarshal(b, &doc) != nil || doc.Version < 1 {
+		return 1
+	}
+	return doc.Version
+}
+func (s *Server) seedDocument(key string, b []byte) error {
+	if !json.Valid(b) {
+		return errors.New("documento JSON inválido")
+	}
+	if s.db == nil {
+		path, mode := s.statePath(), os.FileMode(0644)
+		if key == "admins" {
+			path, mode = s.adminsPath(), 0600
+		}
+		return os.WriteFile(path, b, mode)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	_, err := s.db.ExecContext(ctx, `INSERT INTO imfohsa_private.documents(key,payload,version) VALUES($1,$2::jsonb,$3) ON CONFLICT(key) DO NOTHING`, key, string(b), documentVersion(key, b))
+	if err != nil {
+		return errors.New("no se pudo inicializar el documento en Supabase")
+	}
+	return nil
+}
+func (s *Server) readAdmins() ([]byte, error) { return s.loadDocument("admins", s.adminsPath()) }
+func (s *Server) writeDocument(key string, b []byte) error {
+	if !json.Valid(b) {
+		return errors.New("documento JSON inválido")
+	}
+	if s.db == nil {
+		return os.WriteFile(s.adminsPath(), b, 0600)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	_, err := s.db.ExecContext(ctx, `INSERT INTO imfohsa_private.documents(key,payload,version) VALUES($1,$2::jsonb,1) ON CONFLICT(key) DO UPDATE SET payload=EXCLUDED.payload,version=documents.version+1,updated_at=now()`, key, string(b))
+	return err
+}
+func (s *Server) writeUpload(name string, b []byte) error {
+	if name != filepath.Base(name) || name == "" {
+		return errors.New("nombre inválido")
+	}
+	if s.db == nil {
+		return os.WriteFile(filepath.Join(s.root, "uploads", name), b, 0600)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	_, err := s.db.ExecContext(ctx, `INSERT INTO imfohsa_private.uploads(name,content) VALUES($1,$2) ON CONFLICT(name) DO NOTHING`, name, b)
+	return err
+}
+func (s *Server) readUpload(name string) ([]byte, error) {
+	if s.db == nil {
+		return os.ReadFile(filepath.Join(s.root, "uploads", name))
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	defer cancel()
+	var b []byte
+	err := s.db.QueryRowContext(ctx, `SELECT content FROM imfohsa_private.uploads WHERE name=$1`, name).Scan(&b)
+	if errors.Is(err, sql.ErrNoRows) {
+		return nil, os.ErrNotExist
+	}
+	return b, err
+}
+func (s *Server) migrateUploads() error {
+	if s.db == nil {
+		return nil
+	}
+	entries, err := os.ReadDir(filepath.Join(s.root, "uploads"))
+	if err != nil {
+		return err
+	}
+	for _, entry := range entries {
+		if entry.IsDir() {
+			continue
+		}
+		b, err := os.ReadFile(filepath.Join(s.root, "uploads", entry.Name()))
+		if err != nil {
+			return err
+		}
+		if err := s.writeUpload(entry.Name(), b); err != nil {
+			return errors.New("no se pudieron migrar los archivos adjuntos")
+		}
+	}
+	return nil
+}
