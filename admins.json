@@ -1,0 +1,60 @@
+[
+  {
+    "username": "JLEMUS",
+    "name": "José Lemus",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "gerente_operaciones"
+  },
+  {
+    "username": "WFUENTES",
+    "name": "Wilian Fuentes",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "jefe_logistica"
+  },
+  {
+    "username": "NLIMA",
+    "name": "N. Lima",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "asistente_z16"
+  },
+  {
+    "username": "GOLIVA",
+    "name": "G. Oliva",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "coordinador_z4"
+  },
+  {
+    "username": "VENTAS1",
+    "name": "Ventas prueba",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "ventas"
+  },
+  {
+    "username": "COBROS1",
+    "name": "Créditos y cobros",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "creditos_cobros"
+  },
+  {
+    "username": "DCHOC",
+    "name": "Daniel Choc",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "mensajero",
+    "messengerId": "m_daniel"
+  },
+  {
+    "username": "ECIVIL",
+    "name": "Edwin Civil",
+    "passwordHash": "e69bebcdd5982f494255c45aa9c897f3cbfdff523de3518e315b5b125537c7c4",
+    "active": true,
+    "role": "mensajero",
+    "messengerId": "m_edwin"
+  }
+]

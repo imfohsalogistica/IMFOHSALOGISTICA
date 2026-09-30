@@ -1,0 +1,1022 @@
+[
+  {
+    "path": "SKILL_PLANIFICADOR_RUTAS_IMFOHSA_R8.md",
+    "sha256": "010e6ff66ac11255006a6227b7c40c0a5b702f3d7a1a7518c29f1db59dc4707e",
+    "bytes": 6898
+  },
+  {
+    "path": "CHECKSUMS_R773_PILOTO.txt",
+    "sha256": "d63646450d9cef8ed83adb7f5e6420fd762b0648884640af9fcfcbaa52944e38",
+    "bytes": 613
+  },
+  {
+    "path": "REINICIAR_DATOS_DEMO.bat",
+    "sha256": "3ac8946afbb67f2f639bfc8c242d0f16c768f749dff2b316f945897551b74222",
+    "bytes": 468
+  },
+  {
+    "path": "CHECKSUMS_R772_PILOTO.txt",
+    "sha256": "1dace7737f0274e12b7d15935650b08e822b9251b4fca1712c1d75c1199a021f",
+    "bytes": 1063
+  },
+  {
+    "path": "QA_R7516_RESULTADOS.txt",
+    "sha256": "b19eb1981f9114dfe062704a61e946b89e0e74c0c86b593cbbaacc7b83696ae3",
+    "bytes": 1804
+  },
+  {
+    "path": "LEEME_LOGIN_CORREGIDO.txt",
+    "sha256": "79e2a16a993b069ca1bb438f6a31ccce48ad551740a6872c69eea273a5c839e5",
+    "bytes": 585
+  },
+  {
+    "path": "QA_R774_PILOTO.txt",
+    "sha256": "c7a440ead1ce065c196d2feaf4309027855878a05fd2418b0c1287798b8cb0de",
+    "bytes": 1105
+  },
+  {
+    "path": "INICIAR_IMFOHSA.bat",
+    "sha256": "ce4d4a7c36666569b1f2a31244520bd46f086c20f86ec99b034a3a7faa365c37",
+    "bytes": 2617
+  },
+  {
+    "path": "LEEME_R7518_R8.txt",
+    "sha256": "bf7fdbf6cde2442759c3c8fdc4a78cbcd71e366f91f8efce6f4daab255d746cb",
+    "bytes": 908
+  },
+  {
+    "path": "PRUEBAS_R7515.txt",
+    "sha256": "defbc32bd7d6c2fc13ceeb97f4c099c2719392687c225b2a6f7f0d02081a35f2",
+    "bytes": 1057
+  },
+  {
+    "path": "LEEME_PRIMERO_R771_PILOTO.txt",
+    "sha256": "eacf753ffa4af277ceaeb60597c96df515a18f144d7bce72d2882ba9552396c3",
+    "bytes": 3474
+  },
+  {
+    "path": "INICIAR_PILOTO_INTERNET.bat",
+    "sha256": "69efbe8d45a235e9ac91ef7cafe73b2e620a2357b39e071d7daa2a1d9059ec38",
+    "bytes": 8608
+  },
+  {
+    "path": "VERIFICAR_HTTPS.bat",
+    "sha256": "556c854a20d84b272fd08d30212f7abe4a8890c191bd28797e0f76c3b6beb6b6",
+    "bytes": 2123
+  },
+  {
+    "path": "QA_R770_PILOTO.txt",
+    "sha256": "e84106bbb072f253b7bfd96f3544bbe598080f26aee8683fff3e99101f7df2eb",
+    "bytes": 3015
+  },
+  {
+    "path": "LEEME_ERROR_1033_R776.txt",
+    "sha256": "b6941d5e98f3ded79f093fc4f8cf414a5c0c6ea4de0f85d2a1660b7df4daf2ef",
+    "bytes": 994
+  },
+  {
+    "path": "DETENER_PILOTO.bat",
+    "sha256": "d5938e16464dbbc2341e6ab173498f6f4c2f9f83bfe5929c079fedde3f609103",
+    "bytes": 206
+  },
+  {
+    "path": "server_imfohsa_linux",
+    "sha256": "a7d95e8ceac94b2901da1a61b36bb3a2a0d0f93d7b57fd9f23cfbdcbc27c2914",
+    "bytes": 9886029
+  },
+  {
+    "path": "QA_R760_RESULTADOS.txt",
+    "sha256": "fd5187e6fa4be2799b68c6521fcf6d03ce664c0a1848db3375fc898a494582c0",
+    "bytes": 3449
+  },
+  {
+    "path": "QA_PLANIFICADOR_R8_RESULTADOS.txt",
+    "sha256": "e0a710b80122e77e80e0090512cd8a59bca4e003f2e4d892af9baa9d01c3cf9a",
+    "bytes": 2013
+  },
+  {
+    "path": "VERIFICAR_PILOTO_INTERNET.bat",
+    "sha256": "0c91b17f5680aa8427777088a77ebe521df5b493aee9aa50ba4de138c9ddfb90",
+    "bytes": 812
+  },
+  {
+    "path": "QA_LOGIN_R7515_1.txt",
+    "sha256": "710ff505dd75b945145866a74cdbe62adcee4a83f2258bd99c9286a8e435e3cd",
+    "bytes": 823
+  },
+  {
+    "path": "QA_PLANIFICADOR_R7519_RESULTADOS.txt",
+    "sha256": "01e71ad43c66979183be1a72b6e5b2c9809fc3b4ca6e356a8e64f4100a918938",
+    "bytes": 3079
+  },
+  {
+    "path": "CAMBIOS_MODULO_MENSAJEROS_R774.txt",
+    "sha256": "2cda2a024d112922ade407cd5f563ccc2dd1c355da4de26db8d18f4e52f6a9d1",
+    "bytes": 1233
+  },
+  {
+    "path": "CHECKSUMS_R7514.txt",
+    "sha256": "ca6a9c196a4984b7a80399a779c99f5c2993bbe99033b3da0f23d4ba6e7ab3bb",
+    "bytes": 515
+  },
+  {
+    "path": "DETENER_IMFOHSA.bat",
+    "sha256": "306b78d375c3d51a55ffd5f048a15b0163ececb9ea7745a8f5a2a2476c50c4e0",
+    "bytes": 141
+  },
+  {
+    "path": "USUARIOS_PILOTO_R772.txt",
+    "sha256": "7016fdd63b90ed554adc27343feb0e2fe0923d31b61246d87afaed3d290ef8a6",
+    "bytes": 909
+  },
+  {
+    "path": "CHECKSUMS_R771_PILOTO.txt",
+    "sha256": "e55133900f2f98680af6f3434e752adde6deb8139746f3f19eff7430049df648",
+    "bytes": 924
+  },
+  {
+    "path": "LISTAS_REALES_CARGADAS_R760.txt",
+    "sha256": "17ae6f276b934113d8a7ce0b685e9f5030ae02827288b10b22689ca3aa661e70",
+    "bytes": 1084
+  },
+  {
+    "path": "CHECKSUMS_R7519_R8.txt",
+    "sha256": "741a74b0550939a31a8de5f98969cf9f65b2b3e18f266daf0daa55c9b27882c6",
+    "bytes": 437
+  },
+  {
+    "path": "QA_R7515_RESULTADOS.txt",
+    "sha256": "140c5343f271371897bd6de7301502852bd981cca126b1d85760ef4d83b7b307",
+    "bytes": 275
+  },
+  {
+    "path": "ESCENARIO_QA_50_PEDIDOS_NO_ASIGNADOS.csv",
+    "sha256": "b934f456b456ee1acda50fe8bb6b04cb9b59c65c34ea8154b2a7bb7f016fb3be",
+    "bytes": 8267
+  },
+  {
+    "path": "index.html.r760bak",
+    "sha256": "b03871e60db8ea30dee647c870c5027b6cd1c789226672531c1670f9f5d22598",
+    "bytes": 711849
+  },
+  {
+    "path": "index.html",
+    "sha256": "e1caed3ef6abf6d448ec4a3fe92d44cd8f3f4982e7055bd287f90e78e0abfeb4",
+    "bytes": 812298
+  },
+  {
+    "path": "FLUJO_ENTREGA_RUTA_R773.txt",
+    "sha256": "357fcc568c266f777a8c375ef2d26378d72d5916e867118a248fa911e20735e7",
+    "bytes": 1054
+  },
+  {
+    "path": "REVISION_REGLAS_R772.txt",
+    "sha256": "871b13a6ce404420e03f3b837ea80df0373f7fd074087c087edde0d65a473fc1",
+    "bytes": 4578
+  },
+  {
+    "path": "server_imfohsa.exe",
+    "sha256": "6c8e5cc2a7d102e694b225add4740c835ae8eab2a0241b20169fe35484ce7d6c",
+    "bytes": 10051072
+  },
+  {
+    "path": "MOSTRAR_ENLACE_RED_LOCAL.bat",
+    "sha256": "eba1daa274be09e456e5fc2f9796cfd979a590784e1d7e632f33d658da536c5b",
+    "bytes": 2643
+  },
+  {
+    "path": "QA_R7516_2.txt",
+    "sha256": "9b13b8367cc367829000a1655f305328881fad00d242969cc2a093a11d55647c",
+    "bytes": 956
+  },
+  {
+    "path": "VERIFICAR_SERVIDOR.bat",
+    "sha256": "c19b3a9d0a4f2b0b743c027daf46ed4498d31de71d1c62c3ae22a8898ae4d857",
+    "bytes": 400
+  },
+  {
+    "path": "QA_CORRECCIONES_R772.txt",
+    "sha256": "20cdc039f61789e73e0526266a140a3aad6c2fa8711f9a24a0bf9b4b2db3446f",
+    "bytes": 4987
+  },
+  {
+    "path": "PROBAR_ACCESO_OTRA_PC.bat",
+    "sha256": "6fbf42d762fac74cafa0a742868595b54da5ff3a00759e2d8a64c2d3d168f6d7",
+    "bytes": 1256
+  },
+  {
+    "path": "GUIA_ENLACES_PILOTO_R772.txt",
+    "sha256": "5e39488d235f0a2e51fadc4f448dfd6bca3a4258ed5713bdabda465f9dadf1ca",
+    "bytes": 1866
+  },
+  {
+    "path": "CHECKSUMS_R770_PILOTO.txt",
+    "sha256": "64af206958a54caf69ca574d1035849055ba0e58f2d0caf316501e5f38a72fed",
+    "bytes": 429
+  },
+  {
+    "path": "RESTABLECER_CREDENCIALES_ADMIN.bat",
+    "sha256": "4d5221bdb564719140cf53f72ac265dd4f6b1dfdec2e90bceba4b36ee45fc4b9",
+    "bytes": 252
+  },
+  {
+    "path": "LEEME_R7517.txt",
+    "sha256": "440345e780258f992d6c4b3b495741cdef40b989f57fda9c85841f81f2f6070b",
+    "bytes": 1247
+  },
+  {
+    "path": "LEEME_R7516_2.txt",
+    "sha256": "e6c527e6971e95c653638be3829eb8487da018b4402939b57e5c4c4f0d0155a4",
+    "bytes": 588
+  },
+  {
+    "path": "QA_R772_PILOTO.txt",
+    "sha256": "327b2ab9bd636f57e0a710022d40c8e63ba5732cb93c21770bc91f019c86cf72",
+    "bytes": 6607
+  },
+  {
+    "path": "LEEME_R7516.txt",
+    "sha256": "64e50109dce90bddba5712fb5c4520f918e43e7e636f92aaa957aef8a3348a20",
+    "bytes": 748
+  },
+  {
+    "path": "CHECKSUMS_R7518_R8.txt",
+    "sha256": "7eed2e7211217bca57573d19b7f972eb825abdf4b34f23b3b54afdf355f3fb8b",
+    "bytes": 724
+  },
+  {
+    "path": "QA_R7516_4.txt",
+    "sha256": "0fb4bdd9efc10946357557bbf752f050b3c0a7f220ff5d7ae23d9ce152bbd182",
+    "bytes": 1240
+  },
+  {
+    "path": "CHECKSUMS_R760_TEST.txt",
+    "sha256": "7e65ae0d6f53317c458887daa574791593135b637165b4a9b9e9331580ce4f87",
+    "bytes": 526
+  },
+  {
+    "path": "USUARIOS_PILOTO_R771.txt",
+    "sha256": "a9af223babe87a4abf2555a977c30b03213a4e04129ca914621d53a0d7f7ff03",
+    "bytes": 909
+  },
+  {
+    "path": "LEEME_PRIMERO_R772_PILOTO.txt",
+    "sha256": "44b3f3ba8b726afc76c918bb36c5545f4690abe41523852a50e0a84d640fb5da",
+    "bytes": 1940
+  },
+  {
+    "path": "CHECKSUMS_R774_PILOTO.txt",
+    "sha256": "2ce88fc9149b0ba8886d6a035a951393d2b0c2329276b90fffe6791ad7fa904e",
+    "bytes": 528
+  },
+  {
+    "path": "PRUEBAS_R7514.txt",
+    "sha256": "a0f72e69d5acb8645f326fc0a00a8190afac646d772bb3d720f2a6069a28c9a6",
+    "bytes": 1734
+  },
+  {
+    "path": "LEEME_R7519_R8.txt",
+    "sha256": "bf7fdbf6cde2442759c3c8fdc4a78cbcd71e366f91f8efce6f4daab255d746cb",
+    "bytes": 908
+  },
+  {
+    "path": "LEEME_R760_TEST.txt",
+    "sha256": "05ff5b11408c56f48a09b0ea389b9aeaa8eb88d5b4c738c83fab77cd0b629498",
+    "bytes": 2999
+  },
+  {
+    "path": "LEEME_R7514.txt",
+    "sha256": "3acc9fbfa76cf3ed851eeeaff1a7bce7dd78b5de6c0828dc509eae03bc4b80f4",
+    "bytes": 1880
+  },
+  {
+    "path": "VERIFICAR_ENLACES_MOVIL_R7517.bat",
+    "sha256": "b93cdb629ea45c50e3542f998c75f6174c14484e3d464e98ed9cfee154363ba9",
+    "bytes": 3024
+  },
+  {
+    "path": "LEEME_R7515.txt",
+    "sha256": "80059a9c0ffaf571f362d066f19e87649595382c349b925e7edb54d887fa0d5a",
+    "bytes": 479
+  },
+  {
+    "path": "LEEME_R777_VISUAL_APROBADA.txt",
+    "sha256": "c359668bcd9d60a00ba88dde8b792c0fc17be69e35b865befb2f5c4d41e000fa",
+    "bytes": 884
+  },
+  {
+    "path": "MANUAL_COMPARTIR_ENLACES_R774.txt",
+    "sha256": "0e87abb3adf377e0809b6b3567b4ad5edcbf20ec1cd1f01b9f46a288f1874041",
+    "bytes": 4094
+  },
+  {
+    "path": "QA_R7514_RESULTADOS.txt",
+    "sha256": "e89437a1d8585a1994235293e18830b2dbb9784093c4a7e5dd990548c60c2eec",
+    "bytes": 2301
+  },
+  {
+    "path": "QA_R7517_RESULTADOS.txt",
+    "sha256": "7479f957f709b148c043bea6355f6d8b5a94d09d01c71be03f40e078e29d532b",
+    "bytes": 1684
+  },
+  {
+    "path": "QA_CORRECCIONES_R773.txt",
+    "sha256": "a17cf06a0e59959a4d4189dc2f1ab2ed8beb64781897bd7a069ffa022241730d",
+    "bytes": 2552
+  },
+  {
+    "path": "PRUEBAS_R7517.txt",
+    "sha256": "8ef83d52d65b5fe2c94d8dd4d46e492e71ecc011bd6a9e088c9aaf5ad191461c",
+    "bytes": 1578
+  },
+  {
+    "path": "QA_R7516_3.txt",
+    "sha256": "baf8729e4afc6ee9a59bf8f6a3beaaafd540c3bd7f8febd70bed38d741ad3c6a",
+    "bytes": 826
+  },
+  {
+    "path": "PRUEBAS_R7516.txt",
+    "sha256": "42167a41655dfaa3eacd03bedbe0ad8ab7fd022470495c200a2d9aabb62d30cb",
+    "bytes": 1171
+  },
+  {
+    "path": "QA_R771_PILOTO.txt",
+    "sha256": "e84106bbb072f253b7bfd96f3544bbe598080f26aee8683fff3e99101f7df2eb",
+    "bytes": 3015
+  },
+  {
+    "path": "CHECKSUMS_R7517.txt",
+    "sha256": "0174a727238d881d696de1d4eaa4864f0bf1d4b7eef0e7f834577e7df5534130",
+    "bytes": 334
+  },
+  {
+    "path": "LEEME_PRIMERO_R770_PILOTO.txt",
+    "sha256": "eacf753ffa4af277ceaeb60597c96df515a18f144d7bce72d2882ba9552396c3",
+    "bytes": 3474
+  },
+  {
+    "path": "CONFIGURAR_NGROK.bat",
+    "sha256": "52144b21ad00aeac860f6e1d1303f5ec947d3893dbdc61a78fe49b8e96564c36",
+    "bytes": 2696
+  },
+  {
+    "path": "DIAGNOSTICAR_ARRANQUE.bat",
+    "sha256": "af943399c7846816e3fd5468a14b6badf1d5eaf310949bc03fb136c4a181708c",
+    "bytes": 835
+  },
+  {
+    "path": "ENLACES_Y_USUARIOS_R772.txt",
+    "sha256": "ec21e10658b440c7794f06ed097c0b21579eeabb75a42ae3680883cb1db91d00",
+    "bytes": 921
+  },
+  {
+    "path": "LEEME_R7516_1.txt",
+    "sha256": "5d680ad90bc468acee8930a44ba3e76331a7d1d3e001dd2da6a09b0279002703",
+    "bytes": 917
+  },
+  {
+    "path": "LEEME_ARRANQUE_R775.txt",
+    "sha256": "f519c54c4d9ba4a3dc040c5ca0087ba882834c1cc2aba146c1eb986ee2a9afb0",
+    "bytes": 908
+  },
+  {
+    "path": "LEEME_ACCESO_EXTERNO_R777.txt",
+    "sha256": "0aa562b78a262091e6b2130cc2db3228d8388cca3dc8cfc6a3bbe160d2c8661a",
+    "bytes": 1701
+  },
+  {
+    "path": "uploads/demo-return-1.jpg",
+    "sha256": "172f341243fee882610402eaa6276bff6175b030dfcbe896ba0b0d43d5da7ddf",
+    "bytes": 40683
+  },
+  {
+    "path": "uploads/demo-return-2.jpg",
+    "sha256": "2dd817dfd245cbe24f71207f34f7a4d50d447ed19b34797d085eaba7df1fd9e0",
+    "bytes": 40980
+  },
+  {
+    "path": "data/default_state.json",
+    "sha256": "c1b2cc127e0529c6a3222800779a1b02e2d3bc182d8cc2bd419cf8b6f0a806bf",
+    "bytes": 258623
+  },
+  {
+    "path": "data/state.json",
+    "sha256": "c1b2cc127e0529c6a3222800779a1b02e2d3bc182d8cc2bd419cf8b6f0a806bf",
+    "bytes": 258623
+  },
+  {
+    "path": "data/admins.json",
+    "sha256": "77796168811b04699ca5e4b6cf9d7b616c5e8c60cd56abb6b157afa430b2fd52",
+    "bytes": 1649
+  },
+  {
+    "path": "codigo_fuente/server_imfohsa.go.bak",
+    "sha256": "8957fa53760fadb249f9328f35b30912d18b577b65d2f31e0011ae5cdeae4351",
+    "bytes": 88305
+  },
+  {
+    "path": "codigo_fuente/server_imfohsa.go",
+    "sha256": "b3af49f25935e3bf0ef09009570461e1b3d6bf94875a09139492b0f5e8b3059f",
+    "bytes": 103700
+  },
+  {
+    "path": "codigo_fuente/server_imfohsa.go.r760bak",
+    "sha256": "2d2a84fbeafcfb25e9a6cf1c687f840105e81b158422b855db61ae5e026e93ea",
+    "bytes": 93164
+  },
+  {
+    "path": "PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/01_CONOCIMIENTO_Y_REGLAS_CONSOLIDADAS.md",
+    "sha256": "c8b7bff0dec8395b5b696a1b92d749f19cf16ecbbd196c133069988c389a1e83",
+    "bytes": 3001
+  },
+  {
+    "path": "PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/04_CAMBIO_VISUAL_LOCAL_R777.md",
+    "sha256": "cf05f989c9935bb4d4d2549528b6a196c2bba1beadb9b108c7a84c5c5f4e8dcd",
+    "bytes": 489
+  },
+  {
+    "path": "PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/03_ESTADO_DE_INTEGRACION.md",
+    "sha256": "93290ef55cef18dc1a7e52744fe82e833b1ff4441f803e99cc951e4d1cab13e2",
+    "bytes": 376
+  },
+  {
+    "path": "PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/02_COMANDOS_Y_PRUEBAS_LOCALES.md",
+    "sha256": "bbeadbe44cdb947b74e80a42d483c7583c893444b87f61c990d36e77df3ecc87",
+    "bytes": 474
+  },
+  {
+    "path": "PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/MANIFIESTO_ARCHIVOS.json",
+    "sha256": "58c592aa468e68f420a46fcf1c55f96b2d25f3d5af2c3cc3b7dd0c13de1915e0",
+    "bytes": 32159
+  },
+  {
+    "path": "PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/REFERENCIAS_VISUALES/Guía visual de la app del mensajero.png",
+    "sha256": "399186275b23b6c0a8ee2f4ba25ca8f63729f9d923543acdf43f8611e9eee376",
+    "bytes": 1631251
+  },
+  {
+    "path": "PAQUETE_CONOCIMIENTO_CHAT_2026-08-25/REFERENCIAS_VISUALES/Panel de Módulos del Sistema.png",
+    "sha256": "3dec8a545864b0d66113c54002e6dee6e4e79392b5dfc1b9791d0c6e48abcdf1",
+    "bytes": 1381944
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_072.jpg",
+    "sha256": "654c818d9b97bfe8321fc6490d323694157e7e377f962e2af4ecd81f3cfbc9e2",
+    "bytes": 124346
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_102.jpg",
+    "sha256": "eb88b425d78cbe61627feb001757e615445d7464822e07aab2b19b34bc3804da",
+    "bytes": 108434
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_048.jpg",
+    "sha256": "ff32089aac5a2ac250384e5d262d11cab028a4ffd68a9a4565168ca312a332b6",
+    "bytes": 99389
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_062.jpg",
+    "sha256": "05899deb37cf4e25de2c3568fd20146b937a6a2b0502fe06003e7db8d0a4ec4e",
+    "bytes": 111837
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_096.jpg",
+    "sha256": "5b3eca6803d351c19ce95f2133a4d88015b0cb1a0c5e4c78683212a0730a32a3",
+    "bytes": 143713
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_054.jpg",
+    "sha256": "1c716a387cef7d87341d6b0abd80dfb0bc000223b316612a31877c7dcde190d8",
+    "bytes": 90719
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_100.jpg",
+    "sha256": "e60ff44eca59741ccc3d4b0c9d0e30d7eb0aa36951a47aa066044bebd84df432",
+    "bytes": 128312
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_014.jpg",
+    "sha256": "70e56a982830e45c0eb07bd18a05f33471b24037c88222f20b103e759599398c",
+    "bytes": 135572
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_076.jpg",
+    "sha256": "750123786f07a653090d58391886901525b02726c948546aabfff4b63f295e28",
+    "bytes": 140829
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_047.jpg",
+    "sha256": "9024a99723b520049657a93ba2be4fceb1e902ff422a53fe9c4a458459fda03e",
+    "bytes": 94012
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_011.jpg",
+    "sha256": "ef50cdc35427f0bd0f2926a73b18e0327f316bfebe443f21cf3b2ad3edf0ad14",
+    "bytes": 109848
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_016.jpg",
+    "sha256": "53502f66a0267a3949e5e2f4f1a45dc4d8bc0c14cfd5e4d561f4af7d756cf11d",
+    "bytes": 125479
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_022.jpg",
+    "sha256": "24123a189c22fa01952611556104c193bda321c7e7563830ed7cd023c270e5d7",
+    "bytes": 116614
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_017.jpg",
+    "sha256": "641f806d81ac3c5bc9daafb100c2b3d9e0e5b9c81c9ca81cb75f0636b8828620",
+    "bytes": 115069
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_075.jpg",
+    "sha256": "9d8ededc48328ee671a17fb5cdefcf8a2a634c10b136c8d1a36ede4b00f9b3a9",
+    "bytes": 129782
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_036.jpg",
+    "sha256": "906a5ab8c6eb616becc0a18200f4a126f6fb407c16edecc7984ccda98618a233",
+    "bytes": 136321
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_064.jpg",
+    "sha256": "105a6c3c5efdeb4c0e0878bb7187f668a0a36aa99f81260ec298216cc4b83a6b",
+    "bytes": 105004
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_053.jpg",
+    "sha256": "1d31408e3adddad567e114ba1f3e5967e625f866d0bf4b5da15a90693961130b",
+    "bytes": 103208
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_069.jpg",
+    "sha256": "49c18965909062d9892df6001c95ad865d8cd93d24ad34c4c459ec80ecf43454",
+    "bytes": 115368
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_110.jpg",
+    "sha256": "77db7b95a7ce0ac3dd2d8401c18dab4b86c1944da7151da70ffa752989a323c1",
+    "bytes": 120473
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_051.jpg",
+    "sha256": "d29138f7f1b8c83d4904eb9ff3e2c827f12d9ce4dfb00a0a566cd8ef36d5504f",
+    "bytes": 110391
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_108.jpg",
+    "sha256": "6c1d185c97ff2363d7573ae2e87c92173f17612a1b608db94c5a2d25bc92492c",
+    "bytes": 108344
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_015.jpg",
+    "sha256": "015b8bb475ee94db8688bbd3a9262355217d0bea668096bb68de546567a7a1db",
+    "bytes": 122687
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_038.jpg",
+    "sha256": "2c728e1bfe533be02654ab388f932691e5b35c79e0881f7827ae7f0c26f19f70",
+    "bytes": 127512
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_040.jpg",
+    "sha256": "990445f482b20ab993fb87355dd80ffa72ca5c407bc4ea3336dfc352bea1c6b6",
+    "bytes": 116856
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_059.jpg",
+    "sha256": "5d9943c78405363f16165f897d296b32fb415a5a47ba253a1afe87977933adc0",
+    "bytes": 107748
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_078.jpg",
+    "sha256": "a213955d96f292e89ab73d8f4438736ec11e34033af425d1a9fcd50d656d41fd",
+    "bytes": 137799
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_109.jpg",
+    "sha256": "fcbddb7e947fcdcd2e666aa5cebe32e58ee20baea751a0744d0d40139fc609be",
+    "bytes": 116670
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_035.jpg",
+    "sha256": "abbf8acd33ba517413e3013a1f252fca2d16945be06ddf975b814be825671dd8",
+    "bytes": 115116
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_068.jpg",
+    "sha256": "c43d758b283609858ccdcde765e19b7fcd8d8046486fae7fcbee4b8ae7d356f0",
+    "bytes": 142274
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_043.jpg",
+    "sha256": "9ee100f43d0be15fa91e7277314617f1d27b42d1138665b565b3c4cb1aad695b",
+    "bytes": 93459
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_090.jpg",
+    "sha256": "81d470fc44cfff92eccdd2d95ce7d7ff8805df77bb259db0ac2fb048df945e82",
+    "bytes": 123519
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_006.jpg",
+    "sha256": "c7c7d7fd66912ef9de4f07802a4328a7653a108ceef0ea78e03048fa741273c3",
+    "bytes": 125117
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_019.jpg",
+    "sha256": "b758e020ead951bba8463ba8af8388e69ede9a92ea4f43319ef53ea414b2ee03",
+    "bytes": 113143
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_020.jpg",
+    "sha256": "8848c2ea5b4d0370e675ba7e90c83b47713f3a31f3404820f10b93012601dd1d",
+    "bytes": 117398
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_065.jpg",
+    "sha256": "8429ad821566e09e0226f8e86ba2486040d02dda4963cb019d6e0ac2a6773c17",
+    "bytes": 111439
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_083.jpg",
+    "sha256": "e1358d103a2cfe1b4f75a7cfa0824b433c2c85f2588a58d9422363223a367468",
+    "bytes": 125109
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_029.jpg",
+    "sha256": "c7d352cfa7d399a6d1da2e9d943bae2c5e71f6a0122b4841b59926cf9022dd9f",
+    "bytes": 114803
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_005.jpg",
+    "sha256": "d6f1c4aa71bf8e55e00dd08fb4f3d53c7180a4ca2bbb792e4ed66b974cad5650",
+    "bytes": 117945
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_077.jpg",
+    "sha256": "75543c4dc892ff362f34d63860d4b69766daff8ed3657d5b40ed11fb800e1079",
+    "bytes": 118600
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_028.jpg",
+    "sha256": "80db1dc0258263f8cca4dab68b372ee85ffbebb1b7017f4081c4d59d19227715",
+    "bytes": 113714
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_081.jpg",
+    "sha256": "23a7976476ace4fc11ab54fc2674ad1c5404f015608ffa8726507c0e6c8f5942",
+    "bytes": 119160
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_021.jpg",
+    "sha256": "f709cbd74a9e2b4f20c895cb6e0fe26825c084e1d2150fee21a8938eed466fd9",
+    "bytes": 109374
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_073.jpg",
+    "sha256": "80eefe8ceb801ee748f8312d81706d571f34f3b921f2e3cfb599fd42be5f9c20",
+    "bytes": 118713
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_070.jpg",
+    "sha256": "facb0c93aff64aafe7dcccbd5b23ac9920a593804c4212ad82870795a143178f",
+    "bytes": 150086
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_004.jpg",
+    "sha256": "17412fb6fc25e94365313f26e7c65eaa5b23064e28fc0a7278c3b8ea1ffe271b",
+    "bytes": 118000
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_084.jpg",
+    "sha256": "08656e5e4f0203e9b901159497b05be0e1980e117a839f53ce1d5e0e826ad4bd",
+    "bytes": 124265
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_105.jpg",
+    "sha256": "57cffe7e1f033f129ef0589b8fe6f5e9dd4abc00b98cf7bb43dc240ce4ce9324",
+    "bytes": 120148
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_055.jpg",
+    "sha256": "1502d1c42e12cc81776b62ff4136a1adb65b5c51bac53df49ed7aae0039a5054",
+    "bytes": 112454
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_061.jpg",
+    "sha256": "70960927d4a71e6e4dc9794c3a1800999095081e03e251cc81b62d22495f0559",
+    "bytes": 110301
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_012.jpg",
+    "sha256": "be1e22d894d29b8a3648f1458c4cecb0852e6d6034a67a4d8cc65b66874d1d4b",
+    "bytes": 120403
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_067.jpg",
+    "sha256": "09ae2de6f96fa19bf73b31c19412a8e8c0247f78da87dc85b4dd90a29da66ed4",
+    "bytes": 132120
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_052.jpg",
+    "sha256": "0b7c8257a5bc7711a761f8ad7b3690270ada069c8232b4a5e76ae4c3e0ab139f",
+    "bytes": 84855
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_066.jpg",
+    "sha256": "74287600ae6df00c7a6137f3cc053ae41e8587c091885c37f6c50f934b1fd6e4",
+    "bytes": 141194
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_023.jpg",
+    "sha256": "f4d68fb7889fd5494749bb127a624f64edc38622d144aab1c2789b9eb4c0c5f5",
+    "bytes": 102176
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_007.jpg",
+    "sha256": "8537522a53dafe80f4ae86276ced725d053ff2284b71a84a871039249ccc5098",
+    "bytes": 119287
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_085.jpg",
+    "sha256": "8b0cd6c91c713e170625971601fa8d8784e25f218819238f942a5d7ad7496fbd",
+    "bytes": 121283
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_074.jpg",
+    "sha256": "bcf8b56a74728aa71417bff4e7928846ef3fdfbafb1093b251a13f74075a6d77",
+    "bytes": 124466
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_093.jpg",
+    "sha256": "8316ce2a3cef38864fcbd7ade0ddd1a91d001898140c2d56f5c0e31b342d5ebd",
+    "bytes": 127460
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_010.jpg",
+    "sha256": "eba9f6586eebdb0ff310828a92ca40666a50a1259a72dc7ee2c4a567999330a9",
+    "bytes": 124778
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_046.jpg",
+    "sha256": "14944918297c90ed6d19442948f74914a0eb93e7e51c3848cce7ef543bdf267b",
+    "bytes": 94748
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_086.jpg",
+    "sha256": "41573d9bebf4dd314cd5f264b942cb3ddf246f025284604608772d97b8907cf5",
+    "bytes": 145730
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_037.jpg",
+    "sha256": "9ec6649eee669e2694165f59c79b2767801d40280b7d3bf3fd51b95303d84ac3",
+    "bytes": 108396
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_030.jpg",
+    "sha256": "36910e110dac6c1c1d45a20b3459d7c4c933bfd3752b3c1c2ba2edcb6aacadda",
+    "bytes": 115232
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_031.jpg",
+    "sha256": "835e9e403ed26a28c3d69e534aa8e7d7816f1b3a29a995d89cd2863cee945c5b",
+    "bytes": 85229
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_041.jpg",
+    "sha256": "4db84f8ffaf2d77029f571c48908f350891bb6d468e6411e00976899003ca09c",
+    "bytes": 113443
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_039.jpg",
+    "sha256": "ab865965f86244a7e10015294fd652b2b24e496482ab23393ab683e62240923e",
+    "bytes": 111877
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_034.jpg",
+    "sha256": "6a63a75f5465192d27aa8397d6596703744b21a5d22d237e96b70ccedf9e9c4e",
+    "bytes": 118065
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_101.jpg",
+    "sha256": "bf48ec29f8936b271dcb7901cd7d455c95953b6c680efae4242980f4e6a08820",
+    "bytes": 118851
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_094.jpg",
+    "sha256": "6f2eff574121276609aef918936784c5927ae55fe70b4be652b24e5607fda859",
+    "bytes": 126097
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_089.jpg",
+    "sha256": "f35a939a5557ecb38d3f30e8d5fad3e220fe8c8995640db6c8bd677ed1ecd0d4",
+    "bytes": 113803
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_111.jpg",
+    "sha256": "783b2ce6547ebad4ab824f00239061ecf577d10e9548f02aff99a30544e8fbd4",
+    "bytes": 115885
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_033.jpg",
+    "sha256": "dde59b9d55ae4172fb204e3c6e67092facf35954d3314e8f89eebd67de97dfbb",
+    "bytes": 107092
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_008.jpg",
+    "sha256": "39ad98c9d5520a61e681f1d30e8e6b94942c74efc844942aa8b54439ed7891b8",
+    "bytes": 125584
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_058.jpg",
+    "sha256": "bee1e0f34be24e48079817f7b8a6620ff0853556d950ebcca8962fd55c9918cc",
+    "bytes": 123569
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_106.jpg",
+    "sha256": "b1f56e504475c9b06e8179e613f9e32dbd140a522005d0dc242c3297c118f21c",
+    "bytes": 120504
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_092.jpg",
+    "sha256": "ae7b02cd60882e3a47a8cd9e0ec685c54d44e1dca561686c03ddcd8f9190bfe7",
+    "bytes": 134374
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_001.jpg",
+    "sha256": "89cfa6b8f7cf7863767a3d3f08bce1f48127bada5f1401133d093fa6ee16a22c",
+    "bytes": 101537
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_060.jpg",
+    "sha256": "f3a954e9ee0a287c743403928112e71ec3e6c0935663b1663f928feb476642ec",
+    "bytes": 98979
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_042.jpg",
+    "sha256": "61bbcef78d1e70a1f2d5c90287546c8a3571496c73a18f639e874eb6b65fa766",
+    "bytes": 117490
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_099.jpg",
+    "sha256": "91f2fa250c914ce54de494f14b283ae6de47564c0346f2f01d41bd0f074855a3",
+    "bytes": 111123
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_018.jpg",
+    "sha256": "d1adacafbfd8a548e4f9f22cd23a4a66924fe995042b63d4c331b40c1771811d",
+    "bytes": 117041
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_107.jpg",
+    "sha256": "3b2485ae076ef4bcacf98c48c261412d491bc6bf8cb71240fa758e37c92c95ea",
+    "bytes": 115164
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_112.jpg",
+    "sha256": "8e7a8d87cbdda523e1a4765536742d8c034a769a5ed08bfc4a9a03d8df26d82d",
+    "bytes": 110311
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_024.jpg",
+    "sha256": "0eac4554edfdc011b1f09aba8d82a06347c1726fd601e960d85e0d43b61a66d2",
+    "bytes": 107546
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_009.jpg",
+    "sha256": "c7ffa6824d895a6b52eba5ba3738f076ed37b1ec969fed85ef027343e808dcf2",
+    "bytes": 117995
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_050.jpg",
+    "sha256": "d6eb78321c8e17fd3775ec9aaa85ce1521d81be3814e739bfffef1dad37803b5",
+    "bytes": 91155
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_027.jpg",
+    "sha256": "095a693610421408bbd076e6c72dca34d10425829ea85df15d4d33bd86ec1654",
+    "bytes": 118260
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_087.jpg",
+    "sha256": "e6cd580e185707b6a2ff8fb86c9f2963a28935b7b40ddfa166e28372721d3aee",
+    "bytes": 123622
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_049.jpg",
+    "sha256": "313d5c49e8ad11248c0f8770ee80ce92e3bf52adb151377cb5b12a64d543095a",
+    "bytes": 108840
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_002.jpg",
+    "sha256": "837a7858ea30f5f72bb3c64b6507b6edb5fe8eaca9d65eac8e5bfffa9803a90e",
+    "bytes": 108928
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_104.jpg",
+    "sha256": "5979c16e5979bd842ebaccfabdea1fd3a5833c22132d5a08585b3b4d45402a2b",
+    "bytes": 104904
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_063.jpg",
+    "sha256": "f651b0ce3799ae252e023c18e39a11d2b641647ebbc4b9ab131b2efe59f66ddf",
+    "bytes": 99734
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_080.jpg",
+    "sha256": "85af14dffdb564724d5c3622961372fe1c92cc1f59a7acca4996115535dd07cf",
+    "bytes": 143339
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_079.jpg",
+    "sha256": "7f97a6ab36236d518419f56017ca1e2f4ab7cc71c0aece2685fa676eb3d86e3a",
+    "bytes": 127935
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_057.jpg",
+    "sha256": "d3f643fd9ef3d5687fb57603716500db224081386dfb03828baa6e336e1b8e96",
+    "bytes": 92224
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_044.jpg",
+    "sha256": "c183bb30279f1536c485f07f264e3c7049f867d554371b1517905193bfc26abd",
+    "bytes": 117412
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_098.jpg",
+    "sha256": "11ea75fb7d1ed205421eebff420f1d97d082036da49c85b82e88f32c10b28d74",
+    "bytes": 102590
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_025.jpg",
+    "sha256": "3ca648e5bea585188d87743c3af40cfce82014c0073bcb6d9c555da4cfacaadd",
+    "bytes": 110701
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_088.jpg",
+    "sha256": "3f639bd6dd743e8cb20517a8015c8bd6b25480877b185b1b94cf595785b6d2c5",
+    "bytes": 130715
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_091.jpg",
+    "sha256": "b234a3f3bc25434863e5ebc870e631d1247c007faafbb78f3458a6e6e63d5809",
+    "bytes": 128892
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_013.jpg",
+    "sha256": "b01e85ceedd6896fc1aade7c3c44093539e8d8b1551e7f217dbf049c4250b7d4",
+    "bytes": 135286
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_097.jpg",
+    "sha256": "d43bb360f393fc30937f2fa8e5ccaa41be517456a65ef63cdc45b87c9268bf0a",
+    "bytes": 104103
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_032.jpg",
+    "sha256": "50e6fddc1e4800bb108eac8ba1e9bf6ab322682c9e16df523e5eae61f8ae69f4",
+    "bytes": 122975
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_095.jpg",
+    "sha256": "0c093eee986b8ad9552d2ff7b09822e593ad2758dc4f7baf4f0369febe00a194",
+    "bytes": 123961
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_026.jpg",
+    "sha256": "52126f271e32d47eb96612cd99d09174f84e9950cb6150be93d496c7a16f9006",
+    "bytes": 116588
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_056.jpg",
+    "sha256": "af821e4cf8ee71063b1de5d62020826eb379f96062ad95759d5f11a86fd59d24",
+    "bytes": 131920
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_071.jpg",
+    "sha256": "fa649b66278b51689b4bc34a24428d3b2492f1198132005083f610405e96fd05",
+    "bytes": 126927
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_082.jpg",
+    "sha256": "14a545bf1a65e3c7aa977ff2dd00d134cd173c55859bc78341de778f7100b89e",
+    "bytes": 140933
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_103.jpg",
+    "sha256": "e556838f167e333a2cb33260b69e302e88d7d330d20ef4ef2f07f009cf637da2",
+    "bytes": 108284
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_003.jpg",
+    "sha256": "e94d8de3bcf16c6709e25f28728a8ba9b1e38636f341a6605cbc8a63db9cc240",
+    "bytes": 123362
+  },
+  {
+    "path": "uploads/listas_reales/lista_real_045.jpg",
+    "sha256": "deaa055641ef00fdcac7a239bd49adb37d263ba66ebfad423318d24b0be0f7ca",
+    "bytes": 98897
+  }
+]
