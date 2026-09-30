@@ -30,7 +30,7 @@ import (
 	"time"
 )
 
-const port = 8815
+var port = 8815
 
 type Server struct {
 	mu               sync.RWMutex
@@ -70,6 +70,11 @@ type CaptureSession struct {
 }
 
 func main() {
+	if value := os.Getenv("PORT"); value != "" {
+		parsed, err := strconv.Atoi(value)
+		if err != nil || parsed < 1 || parsed > 65535 { log.Fatal("PORT inválido") }
+		port = parsed
+	}
 	exe, _ := os.Executable()
 	root := filepath.Dir(exe)
 	if runtime.GOOS != "windows" {
@@ -78,6 +83,7 @@ func main() {
 		}
 	}
 	s := &Server{sessions: map[string]string{}, root: root, eventClients: map[chan int64]bool{}, captures: map[string]*CaptureSession{}}
+	s.publicURL = strings.TrimRight(os.Getenv("RENDER_EXTERNAL_URL"), "/")
 	if err := s.loadState(); err != nil {
 		log.Fatal(err)
 	}
@@ -154,7 +160,7 @@ func withHeaders(next http.Handler) http.Handler {
 		w.Header().Set("X-Content-Type-Options", "nosniff")
 		// Permite que una pestaña antigua pueda verificar el servidor nuevo durante la migración.
 		origin := r.Header.Get("Origin")
-		if origin != "" {
+		if origin == "http://"+r.Host || origin == "https://"+r.Host {
 			w.Header().Set("Access-Control-Allow-Origin", origin)
 			w.Header().Set("Vary", "Origin")
 			w.Header().Set("Access-Control-Allow-Credentials", "true")
@@ -211,6 +217,16 @@ func (s *Server) loadState() error {
 		}
 		bb, _ := json.MarshalIndent(admins, "", "  ")
 		os.WriteFile(s.adminsPath(), bb, 0600)
+	}
+	if password := os.Getenv("IMFOHSA_BOOTSTRAP_PASSWORD"); password != "" {
+		var admins []Admin
+		bb, err := os.ReadFile(s.adminsPath())
+		if err != nil { return err }
+		if err := json.Unmarshal(bb, &admins); err != nil { return err }
+		for i := range admins { admins[i].PasswordHash = hash(password) }
+		bb, err = json.MarshalIndent(admins, "", "  ")
+		if err != nil { return err }
+		if err := os.WriteFile(s.adminsPath(), bb, 0600); err != nil { return err }
 	}
 	return nil
 }
@@ -731,7 +747,7 @@ func (s *Server) ensureDeviceCookie(w http.ResponseWriter, r *http.Request) stri
 	d := token()
 	http.SetCookie(w, &http.Cookie{
 		Name: "imfohsa_route_device", Value: d, Path: "/", HttpOnly: true,
-		SameSite: http.SameSiteLaxMode, MaxAge: 365 * 24 * 3600, Secure: r.TLS != nil,
+		SameSite: http.SameSiteLaxMode, MaxAge: 365 * 24 * 3600, Secure: r.TLS != nil || os.Getenv("RENDER") == "true",
 	})
 	return d
 }
@@ -1147,7 +1163,7 @@ func (s *Server) login(w http.ResponseWriter, r *http.Request) {
 	s.mu.Lock()
 	s.sessions[t] = q.Username
 	s.mu.Unlock()
-	http.SetCookie(w, &http.Cookie{Name: "imfohsa_session", Value: t, Path: "/", HttpOnly: true, SameSite: http.SameSiteLaxMode, MaxAge: 12 * 3600, Secure: r.TLS != nil})
+	http.SetCookie(w, &http.Cookie{Name: "imfohsa_session", Value: t, Path: "/", HttpOnly: true, SameSite: http.SameSiteLaxMode, MaxAge: 12 * 3600, Secure: r.TLS != nil || os.Getenv("RENDER") == "true"})
 	resp := map[string]interface{}{"ok": true, "username": q.Username, "name": name, "role": role}
 	if role == "mensajero" {
 		if messengerID == "" {
@@ -1624,26 +1640,7 @@ func (s *Server) static(w http.ResponseWriter, r *http.Request) {
 		w.Write(b)
 		return
 	}
-	clean := filepath.Clean(p)
-	if strings.Contains(clean, "..") {
-		http.Error(w, "bad", 400)
-		return
-	}
-	full := filepath.Join(s.root, clean)
-	st, err := os.Stat(full)
-	if err != nil || st.IsDir() {
-		b, er := os.ReadFile(filepath.Join(s.root, "index.html"))
-		if er != nil {
-			http.Error(w, "index", 500)
-			return
-		}
-		w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		w.Header().Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
-		w.Header().Set("Pragma", "no-cache")
-		w.Write(b)
-		return
-	}
-	http.ServeFile(w, r, full)
+	http.NotFound(w, r)
 }
 func (s *Server) uploadsServe(w http.ResponseWriter, r *http.Request) {
 	http.StripPrefix("/uploads/", http.FileServer(http.Dir(filepath.Join(s.root, "uploads")))).ServeHTTP(w, r)
