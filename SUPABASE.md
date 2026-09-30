@@ -50,3 +50,33 @@ go build -o server_imfohsa server_imfohsa.go
 ```
 
 Sin `DATABASE_URL`, el piloto de Windows sigue usando los archivos locales.
+
+## Tablas operativas en Supabase
+
+La migración `sql/imfohsa_business_tables.sql` crea 22 tablas en `public` y las
+sincroniza, en la misma transacción, cada vez que el servidor guarda el estado
+o los usuarios. Se conserva el documento privado como fuente de datos del
+servidor actual. Cambie datos desde la aplicación: editar estas tablas en
+Table Editor no modifica el documento privado y la próxima sincronización
+puede reemplazar esas ediciones. Las columnas de consulta son generadas desde
+`datos`; el JSON conserva los campos operativos variables.
+
+Tablas: `centros`, `clientes`, `mensajeros`, `vehiculos`, `pedidos`, `combustible`,
+`costos_manuales`, `inventario_movimientos`, `traslados_bodega`,
+`documentos_despacho`, `solicitudes_panel`, `asignaciones_panel`, `viajes_panel`,
+`historial_rutas`, `historial_cobros`, `actividad`, `reportes_mejora`,
+`indicadores_sistema`, `disponibilidad_diaria`, `resumenes_diarios`,
+`configuracion` y `usuarios`.
+
+Las tablas y funciones de sincronización solo permiten el rol backend
+`imfohsa_app`. Las tablas tienen RLS, sin permisos para `anon` ni
+`authenticated`. Las tablas de consulta omiten hashes de contraseña, claves
+API y tokens de acceso. Las funciones usan SECURITY INVOKER y parámetros
+para los datos, sin elevar privilegios.
+
+El servicio activo utiliza `imfohsa_app.pzeyfhgjojwskriwbeam` como usuario de
+Session pooler. Su contraseña fue generada y configurada en la variable privada
+`DATABASE_URL` de Render; no se guarda en este repositorio. Ese rol tiene acceso
+al esquema privado y a estas tablas, sin superusuario ni bypass de RLS.
+La cadena de `postgres` mostrada antes en este documento es únicamente una
+plantilla; para el servicio actual conserve la variable privada existente.
